@@ -77,6 +77,10 @@ public class Player {
      */
     public boolean makeMove(){
         if(getScore()>21){
+            aceSwitch();
+            return false;
+        }
+        else if(getScore()==21){
             return false;
         }
         Scanner in = new Scanner(System.in);
@@ -87,6 +91,19 @@ public class Player {
         }
         else{
             return false;
+        }
+    }
+
+    public void aceSwitch(){
+        if(getPlayerHand().contains(11)){
+            for (int i = 0; i < getPlayerHand().size(); i++) {
+                if(getPlayerHand().get(i)==11){
+                    getPlayerHand().remove(i);
+                    getPlayerHand().add(1);
+                    setPlayerHand(getPlayerHand());
+                    break;
+                }
+            }
         }
     }
 }
