@@ -19,6 +19,7 @@
 package Blackjack;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class PlayGame {
     public static void main(String[] args) {
@@ -62,6 +63,7 @@ public class PlayGame {
         }
         if (player.getScore()>21){
             System.out.println("You busted, you lose");
+            playAgain();
         }
         else{
             System.out.println(dealer);
@@ -73,18 +75,35 @@ public class PlayGame {
 
             if(dealer.getScore()>21){
                 System.out.println("Dealer busted, you win");
+                playAgain();
             }
             else{
                 if(player.getScore()>dealer.getScore()){
                     System.out.println("You win, you scored higher");
+                    playAgain();
                 }
                 else if(dealer.getScore()>player.getScore()){
                     System.out.println("You lose, the dealer scored higher");
+                    playAgain();
                 }
                 else{
                     System.out.println("It's a tie, you each scored the same");
+                    playAgain();
                 }
             }
         }
+    }
+
+    private static void playAgain() {
+        System.out.print("Would you like to play again? [Y/N]: ");
+        Scanner playAgain = new Scanner(System.in);
+        String decision = playAgain.nextLine();
+        if (decision.equalsIgnoreCase("y")) {
+            blackjack();
+            System.out.println("Would you like to play again? [Y/N]: ");
+            decision = playAgain.nextLine();
+        }
+        System.out.println("Goodbye!");
+        System.exit(0);
     }
 }
