@@ -95,7 +95,7 @@ public class PlayGame {
     }
 
     private static void playAgain() {
-        System.out.print("Would you like to play again? [Y/N]: ");
+        System.out.println("Would you like to play again? [Y/N]: ");
         Scanner playAgain = new Scanner(System.in);
         String decision = playAgain.nextLine();
         if (decision.equalsIgnoreCase("y")) {
