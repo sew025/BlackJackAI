@@ -6,11 +6,11 @@
  * Name: YOUR NAME
  * Section: YOUR SECTION
  * Date: 11/12/19
- * Time: 3:05 PM
+ * Time: 11:16 PM
  *
  * Project: csci205finalproject
  * Package: Blackjack
- * Class: Dealer
+ * Class: Player
  *
  * Description:
  *
@@ -19,15 +19,13 @@
 package Blackjack;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-/**
- * Dealer class, designed to simulate the actions of a dealer for the game blackjack
- */
-public class Dealer {
+public class Player {
     /**
      * contains the cards within the dealers hand
      */
-    private ArrayList<Integer> dealerHand;
+    private ArrayList<Integer> playerHand;
 
     /**
      * holds the current score of the dealers hand
@@ -35,26 +33,21 @@ public class Dealer {
     private int score;
 
     /**
-     * the number specified for the dealer stand at
+     * constructor to build the players starting hand
+     * @param playerHand - the original two cards the player begins with
+     * @param score - the starting score of the player based on the cards passed in
      */
-    private final int STOP_NUM = 17;
-
-    /**
-     * constructor to build the dealers starting hand
-     * @param dealerHand - the original two cards the dealer begins with
-     * @param score - the starting score of the dealer based on the cards passed in
-     */
-    public Dealer(ArrayList<Integer> dealerHand, int score) {
-        this.dealerHand = dealerHand;
+    public Player(ArrayList<Integer> playerHand, int score) {
+        this.playerHand = playerHand;
         this.score = score;
     }
 
-    public ArrayList<Integer> getDealerHand() {
-        return dealerHand;
+    public ArrayList<Integer> getPlayerHand() {
+        return playerHand;
     }
 
-    public void setDealerHand(ArrayList<Integer> dealerHand) {
-        this.dealerHand = dealerHand;
+    public void setPlayerHand(ArrayList<Integer> playerHand) {
+        this.playerHand = playerHand;
     }
 
     /**
@@ -63,7 +56,7 @@ public class Dealer {
      */
     public int getScore() {
         int temp = 0;
-        for (Integer i: getDealerHand()) {
+        for (Integer i: getPlayerHand()) {
             temp += i;
         }
         return temp;
@@ -75,15 +68,18 @@ public class Dealer {
 
     @Override
     public String toString() {
-        return "Dealer hand: " + getDealerHand() + " With a score: " + getScore();
+        return "Player hand: " + getPlayerHand() + " With a score: " + getScore();
     }
 
     /**
-     * determines whether the dealer will continue playing (Hit/True) or will be stopping (Stand/False)
+     * determines whether the player will continue playing (Hit/True) or will be stopping (Stand/False)
      * @return boolean value true or false
      */
     public boolean makeMove(){
-        if (getScore()<STOP_NUM){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Do you want to (H)it or (S)tand?");
+        String choice = in.nextLine();
+        if(choice.equalsIgnoreCase("H")){
             return true;
         }
         else{
