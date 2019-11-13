@@ -94,6 +94,9 @@ public class Dealer {
         }
     }
 
+    /**
+     * method used to switch the value of the ace from a value of 11 to 1 if the dealer has busted because of the ace
+     */
     public void aceSwitch(){
         for (int i = 0; i < getDealerHand().size(); i++) {
             if(getDealerHand().get(i)==11){
