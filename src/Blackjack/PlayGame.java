@@ -18,7 +18,6 @@
  */
 package Blackjack;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PlayGame {
@@ -58,7 +57,6 @@ public class PlayGame {
             deck.getDeck().remove(0);
             System.out.println(player);
         }
-
         if (player.getScore()>21){
             System.out.println("You busted, you lose");
         }
