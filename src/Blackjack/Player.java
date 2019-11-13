@@ -76,6 +76,9 @@ public class Player {
      * @return boolean value true or false
      */
     public boolean makeMove(){
+        if(getScore()>21){
+            return false;
+        }
         Scanner in = new Scanner(System.in);
         System.out.println("Do you want to (H)it or (S)tand?");
         String choice = in.nextLine();
