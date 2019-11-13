@@ -22,6 +22,10 @@ import java.util.ArrayList;
 
 public class PlayGame {
     public static void main(String[] args) {
+        blackjack();
+    }
+
+    public static void blackjack(){
         //make and shuffle the deck
         Deck deck = new Deck();
         deck.shuffle();
@@ -49,7 +53,6 @@ public class PlayGame {
         Dealer dealer = new Dealer(dHand,startDScore);
 
         System.out.println(player);
-        System.out.println(dealer);
 
         //run a turn
         while(player.makeMove()){
@@ -61,6 +64,7 @@ public class PlayGame {
             System.out.println("You busted, you lose");
         }
         else{
+            System.out.println(dealer);
             while(dealer.makeMove()){
                 dealer.getDealerHand().add(deck.getDeck().get(0));
                 deck.getDeck().remove(0);
