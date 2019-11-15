@@ -76,7 +76,13 @@ public class Player {
      * @return boolean value true or false
      */
     public boolean makeMove(){
-        if(getScore()>21){
+        if(getScore()>21&&getPlayerHand().contains(11)){
+            aceSwitch();
+        }
+        else if(getScore()>21){
+            return false;
+        }
+        else if(getScore()==21){
             return false;
         }
         Scanner in = new Scanner(System.in);
@@ -87,6 +93,18 @@ public class Player {
         }
         else{
             return false;
+        }
+    }
+
+    public void aceSwitch(){
+        for (int i = 0; i < getPlayerHand().size(); i++) {
+            if(getPlayerHand().get(i)==11){
+                getPlayerHand().remove(i);
+                getPlayerHand().add(1);
+                setPlayerHand(getPlayerHand());
+                System.out.println(toString());
+                break;
+            }
         }
     }
 }
