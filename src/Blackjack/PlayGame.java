@@ -21,11 +21,18 @@ package Blackjack;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * the running program to create a single consul version game of blackjack
+ */
 public class PlayGame {
     public static void main(String[] args) {
         blackjack();
     }
 
+    /**
+     * the function to play one singular turn of blackjack
+     * @author Jack Otto
+     */
     public static void blackjack(){
         //make and shuffle the deck
         Deck deck = new Deck();
@@ -94,6 +101,10 @@ public class PlayGame {
         }
     }
 
+    /**
+     * function the allow the user to play again
+     * @author Matt McGauley
+     */
     private static void playAgain() {
         System.out.println("Would you like to play again? [Y/N]: ");
         Scanner playAgain = new Scanner(System.in);
