@@ -49,7 +49,7 @@ public class LandingPageMain extends Application {
     public void start(Stage primaryStage) {
         theController = new LandingPageController(theModel, theView);
 
-        Scene openingScene = new Scene(theView.getTheRoot());
+        Scene openingScene = new Scene(theView.getMainRoot());
 
         primaryStage.setTitle("Welcome to BlackJack!");
         primaryStage.setScene(openingScene);

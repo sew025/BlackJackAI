@@ -43,7 +43,7 @@ public class LandingPageView {
     /**
      * The root
      */
-    private VBox theRoot;
+    private VBox mainRoot;
     /**
      * A label for the root
      */
@@ -72,16 +72,16 @@ public class LandingPageView {
     public LandingPageView(LandingPageModel theModel) {
         this.theModel = theModel;
 
-        theRoot = new VBox(10);
-        theRoot.setMinHeight(400);
-        theRoot.setMinWidth(600);
-        theRoot.setAlignment(Pos.TOP_CENTER);
+        mainRoot = new VBox(10);
+        mainRoot.setMinHeight(400);
+        mainRoot.setMinWidth(600);
+        mainRoot.setAlignment(Pos.TOP_CENTER);
 
         Image backgroundImage = new Image("https://www.stationcasinosoffers.com/wp-content/uploads/2018/08/blackjack-table-nub-thumb.jpg");
         BackgroundImage blackjackBackground = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, false));
         Background background = new Background(blackjackBackground);
-        theRoot.setBackground(background);
+        mainRoot.setBackground(background);
 
         titleLabel = new Label("Welcome to BlackJack!");
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
@@ -96,11 +96,11 @@ public class LandingPageView {
         playSinglePlayerGame = new Button("Play BlackJack against a computer");
         playWithAI = new Button("Simulate the game using Artificial Intelligence");
 
-        theRoot.getChildren().addAll(titleLabel, playSinglePlayerGame, playWithAI);
+        mainRoot.getChildren().addAll(titleLabel, playSinglePlayerGame, playWithAI);
     }
 
-    public VBox getTheRoot() {
-        return theRoot;
+    public VBox getMainRoot() {
+        return mainRoot;
     }
 
     public Button getPlaySinglePlayerGame() {
