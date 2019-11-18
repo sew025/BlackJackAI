@@ -49,14 +49,6 @@ public class LandingPageView {
      */
     private Label titleLabel;
     /**
-     * A pane to ask the user what they want to do
-     */
-    private FlowPane thePane;
-    /**
-     * A label to add to the pane displaying what options the user has
-     */
-    private Label paneLabel;
-    /**
      * A button to play the single player game
      */
     private Button playSinglePlayerGame;
@@ -83,15 +75,12 @@ public class LandingPageView {
         Background background = new Background(blackjackBackground);
         mainRoot.setBackground(background);
 
-        titleLabel = new Label("Welcome to BlackJack!");
+        titleLabel = new Label("Welcome to BlackJack!" + "\n" + "How do you wake up Lady Gaga?");
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
         titleLabel.setTextFill(Color.WHITE);
         titleLabel.setTextAlignment(TextAlignment.CENTER);
 
-        thePane = new FlowPane(Orientation.HORIZONTAL);
-        thePane.setHgap(10);
-        paneLabel = new Label("Choose one of the following options to play the game:");
-        thePane.getChildren().addAll(paneLabel);
+
 
         playSinglePlayerGame = new Button("Play BlackJack against a computer");
         playWithAI = new Button("Simulate the game using Artificial Intelligence");

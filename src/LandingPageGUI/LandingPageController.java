@@ -18,6 +18,12 @@
  */
 package LandingPageGUI;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+
+import java.io.File;
+
 public class LandingPageController {
     /** The Model */
     private LandingPageView theView;

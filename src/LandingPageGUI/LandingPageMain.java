@@ -1,15 +1,29 @@
 package LandingPageGUI;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
+import java.applet.Applet;
+import java.io.File;
+import java.util.Map;
+
 public class LandingPageMain extends Application {
-    /** The Model */
+    /**
+     * The Model
+     */
     private LandingPageModel theModel;
-    /** The View */
+    /**
+     * The View
+     */
     private LandingPageView theView;
-    /** The Controller */
+    /**
+     * The Controller
+     */
     private LandingPageController theController;
 
 
@@ -18,8 +32,8 @@ public class LandingPageMain extends Application {
      * want to play the single player game or they want to use an AI and generate
      * some results about its performance
      *
-     * @author Matt McGauley
      * @param args
+     * @author Matt McGauley
      */
     public static void main(String[] args) {
         launch(args);
@@ -27,6 +41,7 @@ public class LandingPageMain extends Application {
 
     /**
      * Calls the Model and the View to be set up here
+     *
      * @throws Exception
      */
     public void init() throws Exception {
@@ -42,12 +57,17 @@ public class LandingPageMain extends Application {
      * added here and this will change to the appropriate scene when their
      * buttons are clicked. For now it just shows the opening page
      *
+     * @param primaryStage The Stage for the GUI
      * @author Matt McGauley
-     * @param primaryStage  The Stage for the GUI
      */
     @Override
     public void start(Stage primaryStage) {
         theController = new LandingPageController(theModel, theView);
+
+        String path = "/Users/mattmcgauley/csci205FinalProject/src/LandingPageGUI/PokerFace.mp3";
+        final Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
 
         Scene openingScene = new Scene(theView.getMainRoot());
 
@@ -55,6 +75,7 @@ public class LandingPageMain extends Application {
         primaryStage.setScene(openingScene);
         primaryStage.sizeToScene();
         primaryStage.setResizable(false);
+
         primaryStage.show();
     }
 }
