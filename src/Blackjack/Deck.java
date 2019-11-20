@@ -38,7 +38,7 @@ public class Deck {
      * creates a deck of cards containing the values (1,2,3...) of the cards
      * @return a list of the cards in numerical order
      */
-    public ArrayList<Integer> makeDeck(){
+    public static ArrayList<Integer> makeDeck(){
         ArrayList<Integer> tempDeck = new ArrayList<>();
         for (Cards card : Cards.values()){
             int i = 0;

@@ -96,6 +96,9 @@ public class Player {
         }
     }
 
+    /**
+     * method used to switch the value of the ace from a value of 11 to 1 if the player has busted because of the ace
+     */
     public void aceSwitch(){
         for (int i = 0; i < getPlayerHand().size(); i++) {
             if(getPlayerHand().get(i)==11){
