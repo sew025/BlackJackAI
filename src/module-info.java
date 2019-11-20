@@ -1,8 +1,9 @@
-module csci205FinalProject {
+module csci205finalproject {
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
     requires java.desktop;
-    opens LandingPageGUI;
+    requires javafx.media;
+    opens GAGA.backgroundMusic;
 }
