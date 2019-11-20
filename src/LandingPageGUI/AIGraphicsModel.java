@@ -23,13 +23,16 @@ public class AIGraphicsModel {
     public AIGraphicsModel() {
     }
 
-//    public int[] trackRandomSuccess(int numTurns) {
-//        int[] successRate = RandomAI.doRandomAI(numTurns);
-//        return successRate;
-//    }
-//
-//    public int[] trackSmartSuccess(int numTurns) {
-//        int[] successRate = SmartAI.doSmartAI(numTurns);
-//        return successRate;
-//    }
+    public int[] trackRandomSuccess(int numTurns){
+        int[] successRate = new int[0];
+        return successRate;
+    }
+
+    public int[] trackSmartSuccess(int numTurns){
+        int[] successRate = new int[0];
+//        for (int i = 0; i < successRate.length; i++) {
+//            successRate[i] = i;
+//        }
+        return successRate;
+    }
 }

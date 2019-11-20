@@ -1,16 +1,42 @@
 package LandingPageGUI;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
+import java.applet.Applet;
+import java.io.File;
+import java.util.Map;
+
 public class LandingPageMain extends Application {
-    /** The Model */
+    /**
+     * The Model for the landing page
+     */
     private LandingPageModel theModel;
-    /** The View */
+    /**
+     * The View for the landing page
+     */
     private LandingPageView theView;
-    /** The Controller */
+    /**
+     * The Controller for the landing page
+     */
     private LandingPageController theController;
+    /**
+     * The Model for the AI Graphics portion
+     */
+    private AIGraphicsModel AIModel;
+    /**
+     * The View for the AI Graphics portion
+     */
+    private AIGrahpicsView AIView;
+    /**
+     * The Controller for the AI Graphics potion
+     */
+    private AIGraphicsController AIController;
 
 
     /**
@@ -18,8 +44,8 @@ public class LandingPageMain extends Application {
      * want to play the single player game or they want to use an AI and generate
      * some results about its performance
      *
-     * @author Matt McGauley
      * @param args
+     * @author Matt McGauley
      */
     public static void main(String[] args) {
         launch(args);
@@ -27,12 +53,15 @@ public class LandingPageMain extends Application {
 
     /**
      * Calls the Model and the View to be set up here
+     *
      * @throws Exception
      */
     public void init() throws Exception {
         super.init();
         theModel = new LandingPageModel();
         theView = new LandingPageView(theModel);
+        AIModel = new AIGraphicsModel();
+        AIView = new AIGrahpicsView(AIModel);
     }
 
 
@@ -42,19 +71,34 @@ public class LandingPageMain extends Application {
      * added here and this will change to the appropriate scene when their
      * buttons are clicked. For now it just shows the opening page
      *
+     * @param primaryStage The Stage for the GUI
      * @author Matt McGauley
-     * @param primaryStage  The Stage for the GUI
      */
     @Override
     public void start(Stage primaryStage) {
         theController = new LandingPageController(theModel, theView);
+        AIController = new AIGraphicsController(AIModel, AIView);
+
+        String path = "/Users/mattmcgauley/csci205FinalProject/src/LandingPageGUI/PokerFace.mp3";
+        final Media media = new Media(new File(path).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
 
         Scene openingScene = new Scene(theView.getMainRoot());
+        Scene AIResultsScene = new Scene(AIView.getAIRoot());
+
+        theView.getPlayWithAI().setOnAction(actionEvent -> {
+            primaryStage.setScene(AIResultsScene);
+        });
+        AIView.getBackButton().setOnAction(actionEvent -> {
+            primaryStage.setScene(openingScene);
+        });
 
         primaryStage.setTitle("Welcome to BlackJack!");
         primaryStage.setScene(openingScene);
         primaryStage.sizeToScene();
         primaryStage.setResizable(false);
+
         primaryStage.show();
     }
 }

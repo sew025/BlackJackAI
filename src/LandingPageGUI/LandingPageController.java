@@ -18,6 +18,9 @@
  */
 package LandingPageGUI;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+
 public class LandingPageController {
     /** The Model */
     private LandingPageView theView;

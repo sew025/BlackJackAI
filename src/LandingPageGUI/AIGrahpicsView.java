@@ -29,11 +29,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.media.Media;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+
+import java.io.File;
 
 public class AIGrahpicsView {
     /**
@@ -76,23 +79,36 @@ public class AIGrahpicsView {
      * A button to start running the AI and displaying the graph once you have all of the info about what they want to simulate
      */
     private Button goButton;
+    /**
+     * A button to go back to the main menu
+     */
+    private Button backButton;
+
 
 
     public AIGrahpicsView(AIGraphicsModel theModel){
         this.theModel = theModel;
 
         AIRoot = new VBox(10);
-        AIRoot.setMinWidth(1000);
-        AIRoot.setMinHeight(1000);
+        AIRoot.setMinWidth(600);
+        AIRoot.setMinHeight(600);
         AIRoot.setAlignment(Pos.TOP_CENTER);
         titleLabel = new Label("Simulate the game of BlackJack using AI!");
         titleLabel.setFont(Font.font("Veranda", FontWeight.BOLD, 30));
         titleLabel.setTextAlignment(TextAlignment.CENTER);
 
+
+        String path = "/Users/mattmcgauley/csci205FinalProject/src/LandingPageGUI/Jack.jpg";
+        final Image backgroundImage = new Image(new File(path).toURI().toString());
+        BackgroundImage jack = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, false));
+        Background background = new Background(jack);
+        AIRoot.setBackground(background);
+
         ObservableList<String> AIOptions =
                 FXCollections.observableArrayList(
                         "Random Guess AI",
-                        "Other AI"
+                        "Smart Guess AI"
                 );
 
         optionsBox = new ComboBox(AIOptions);
@@ -112,14 +128,19 @@ public class AIGrahpicsView {
 
         goButton = new Button("Go!");
 
-        AIRoot.getChildren().addAll(titleLabel, optionsPane, nTurnsLabel, nTurns, goButton);
+        backButton = new Button("Return to Main Menu");
+        backButton.setAlignment(Pos.BOTTOM_RIGHT);
+
+        AIRoot.getChildren().addAll(titleLabel, optionsPane, nTurnsLabel, nTurns, goButton, backButton);
     }
 
     public LineChart generateSuccessChart(int[] successRateArray, String title) {
         NumberAxis xAxis = new NumberAxis();
         xAxis.setLabel("Turn Number");
+        xAxis.setTickUnit(50);
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("AI Success Rate (Number of Wins/Total Hands Played)");
+        yAxis.setLabel("                    AI Success Rate" + "\n" +
+                "(Number of Wins/Total Hands Played)");
 
         successChart = new LineChart<>(xAxis, yAxis);
         successChart.setTitle(title);
@@ -128,6 +149,8 @@ public class AIGrahpicsView {
         for (int index = 0; index < successRateArray.length; index++) {
             dataSeries.getData().add(new XYChart.Data<>(index, successRateArray[index]));
         }
+
+        successChart.getData().add(dataSeries);
 
         successChart.setLegendVisible(false);
         return successChart;
@@ -152,5 +175,9 @@ public class AIGrahpicsView {
 
     public Button getGoButton() {
         return goButton;
+    }
+
+    public Button getBackButton() {
+        return backButton;
     }
 }
