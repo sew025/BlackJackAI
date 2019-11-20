@@ -18,11 +18,8 @@
  */
 package LandingPageGUI;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-
-import java.io.File;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 
 public class LandingPageController {
     /** The Model */

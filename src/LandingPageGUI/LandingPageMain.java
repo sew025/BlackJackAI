@@ -14,17 +14,29 @@ import java.util.Map;
 
 public class LandingPageMain extends Application {
     /**
-     * The Model
+     * The Model for the landing page
      */
     private LandingPageModel theModel;
     /**
-     * The View
+     * The View for the landing page
      */
     private LandingPageView theView;
     /**
-     * The Controller
+     * The Controller for the landing page
      */
     private LandingPageController theController;
+    /**
+     * The Model for the AI Graphics portion
+     */
+    private AIGraphicsModel AIModel;
+    /**
+     * The View for the AI Graphics portion
+     */
+    private AIGrahpicsView AIView;
+    /**
+     * The Controller for the AI Graphics potion
+     */
+    private AIGraphicsController AIController;
 
 
     /**
@@ -48,6 +60,8 @@ public class LandingPageMain extends Application {
         super.init();
         theModel = new LandingPageModel();
         theView = new LandingPageView(theModel);
+        AIModel = new AIGraphicsModel();
+        AIView = new AIGrahpicsView(AIModel);
     }
 
 
@@ -63,6 +77,7 @@ public class LandingPageMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         theController = new LandingPageController(theModel, theView);
+        AIController = new AIGraphicsController(AIModel, AIView);
 
         String path = "/Users/mattmcgauley/csci205FinalProject/src/LandingPageGUI/PokerFace.mp3";
         final Media media = new Media(new File(path).toURI().toString());
@@ -70,6 +85,14 @@ public class LandingPageMain extends Application {
         mediaPlayer.play();
 
         Scene openingScene = new Scene(theView.getMainRoot());
+        Scene AIResultsScene = new Scene(AIView.getAIRoot());
+
+        theView.getPlayWithAI().setOnAction(actionEvent -> {
+            primaryStage.setScene(AIResultsScene);
+        });
+        AIView.getBackButton().setOnAction(actionEvent -> {
+            primaryStage.setScene(openingScene);
+        });
 
         primaryStage.setTitle("Welcome to BlackJack!");
         primaryStage.setScene(openingScene);
