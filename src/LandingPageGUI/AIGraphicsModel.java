@@ -23,12 +23,12 @@ public class AIGraphicsModel {
     public AIGraphicsModel() {
     }
 
-    public int[] trackRandomSuccess(int numTurns){
+    public int[] trackRandomSuccess(int numTurns) {
         int[] successRate = new int[0];
         return successRate;
     }
 
-    public int[] trackSmartSuccess(int numTurns){
+    public int[] trackSmartSuccess(int numTurns) {
         int[] successRate = new int[0];
 //        for (int i = 0; i < successRate.length; i++) {
 //            successRate[i] = i;
