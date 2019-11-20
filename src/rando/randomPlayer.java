@@ -55,7 +55,7 @@ public class randomPlayer {
     }
 
     /**
-     * determines whether the player will continue playing (Hit/True) or will be stopping (Stand/False)
+     * randomly determines whether the player will continue playing (Hit/True) or will be stopping (Stand/False)
      * @return boolean value true or false
      */
     public boolean makeMove(){
