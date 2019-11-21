@@ -22,6 +22,7 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -78,6 +79,15 @@ public class LandingPageView {
         titleLabel = new Label("Welcome to BlackJack!" + "\n" + "How do you wake up Lady Gaga?");
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
         titleLabel.setTextFill(Color.WHITE);
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+        dropShadow.setHeight(5);
+        dropShadow.setRadius(2);
+        dropShadow.setColor(Color.DARKBLUE);
+        titleLabel.setEffect(dropShadow);
+
         titleLabel.setTextAlignment(TextAlignment.CENTER);
 
 

@@ -29,9 +29,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
@@ -90,16 +91,24 @@ public class AIGrahpicsView {
         this.theModel = theModel;
 
         AIRoot = new VBox(10);
-        AIRoot.setMinWidth(600);
-        AIRoot.setMinHeight(600);
+        AIRoot.setMinWidth(675);
+        AIRoot.setMinHeight(675);
         AIRoot.setAlignment(Pos.TOP_CENTER);
         titleLabel = new Label("Simulate the game of BlackJack using AI!");
         titleLabel.setFont(Font.font("Veranda", FontWeight.BOLD, 30));
+        titleLabel.setTextFill(Color.WHITE);
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+        dropShadow.setHeight(5);
+        dropShadow.setRadius(2);
+        dropShadow.setColor(Color.DARKBLUE);
+        titleLabel.setEffect(dropShadow);
+
         titleLabel.setTextAlignment(TextAlignment.CENTER);
 
-
-        String path = "/Users/mattmcgauley/csci205FinalProject/src/LandingPageGUI/Jack.jpg";
-        final Image backgroundImage = new Image(new File(path).toURI().toString());
+        final Image backgroundImage = new Image("https://i1.sndcdn.com/artworks-000050413857-dct4es-t500x500.jpg?671e660");
         BackgroundImage jack = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, false));
         Background background = new Background(jack);
@@ -119,11 +128,13 @@ public class AIGrahpicsView {
         optionsPane.setAlignment(Pos.TOP_CENTER);
 
         optionsLabel = new Label("Choose one of the following AI's to simulate the game with");
+        optionsLabel.setTextFill(Color.WHITE);
         optionsPane.getChildren().addAll(optionsLabel, optionsBox);
 
         nTurns = new TextField();
         nTurns.setMaxWidth(60);
         nTurnsLabel = new Label("How many hands would you like to simulate?");
+        nTurnsLabel.setTextFill(Color.WHITE);
         nTurnsLabel.setLabelFor(nTurns);
 
         goButton = new Button("Go!");
@@ -137,10 +148,12 @@ public class AIGrahpicsView {
     public LineChart generateSuccessChart(int[] successRateArray, String title) {
         NumberAxis xAxis = new NumberAxis();
         xAxis.setLabel("Turn Number");
+        xAxis.tickLabelFillProperty().set(Color.WHITE);
         xAxis.setTickUnit(50);
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("                    AI Success Rate" + "\n" +
                 "(Number of Wins/Total Hands Played)");
+        yAxis.tickLabelFillProperty().set(Color.WHITE);
 
         successChart = new LineChart<>(xAxis, yAxis);
         successChart.setTitle(title);
@@ -151,7 +164,6 @@ public class AIGrahpicsView {
         }
 
         successChart.getData().add(dataSeries);
-
         successChart.setLegendVisible(false);
         return successChart;
     }

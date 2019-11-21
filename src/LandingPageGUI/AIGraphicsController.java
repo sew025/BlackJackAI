@@ -22,7 +22,6 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.scene.control.Alert;
 
-import java.util.HashMap;
 
 public class AIGraphicsController {
     /** The Model */
