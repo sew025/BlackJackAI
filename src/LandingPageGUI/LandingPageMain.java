@@ -79,8 +79,8 @@ public class LandingPageMain extends Application {
         theController = new LandingPageController(theModel, theView);
         AIController = new AIGraphicsController(AIModel, AIView);
 
-        String path = "/Users/mattmcgauley/csci205FinalProject/src/LandingPageGUI/PokerFace.mp3";
-        final Media media = new Media(new File(path).toURI().toString());
+        File musicFile = new File("src/LandingPageGUI/PokerFace.mp3");
+        final Media media = new Media(musicFile.toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
 
