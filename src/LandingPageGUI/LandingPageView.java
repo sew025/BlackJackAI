@@ -22,6 +22,7 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -43,19 +44,11 @@ public class LandingPageView {
     /**
      * The root
      */
-    private VBox theRoot;
+    private VBox mainRoot;
     /**
      * A label for the root
      */
     private Label titleLabel;
-    /**
-     * A pane to ask the user what they want to do
-     */
-    private FlowPane thePane;
-    /**
-     * A label to add to the pane displaying what options the user has
-     */
-    private Label paneLabel;
     /**
      * A button to play the single player game
      */
@@ -72,35 +65,41 @@ public class LandingPageView {
     public LandingPageView(LandingPageModel theModel) {
         this.theModel = theModel;
 
-        theRoot = new VBox(10);
-        theRoot.setMinHeight(400);
-        theRoot.setMinWidth(600);
-        theRoot.setAlignment(Pos.TOP_CENTER);
+        mainRoot = new VBox(10);
+        mainRoot.setMinHeight(400);
+        mainRoot.setMinWidth(600);
+        mainRoot.setAlignment(Pos.TOP_CENTER);
 
         Image backgroundImage = new Image("https://www.stationcasinosoffers.com/wp-content/uploads/2018/08/blackjack-table-nub-thumb.jpg");
         BackgroundImage blackjackBackground = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, false));
         Background background = new Background(blackjackBackground);
-        theRoot.setBackground(background);
+        mainRoot.setBackground(background);
 
-        titleLabel = new Label("Welcome to BlackJack!");
+        titleLabel = new Label("Welcome to BlackJack!" + "\n" + "How do you wake up Lady Gaga?");
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
         titleLabel.setTextFill(Color.WHITE);
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+        dropShadow.setHeight(5);
+        dropShadow.setRadius(2);
+        dropShadow.setColor(Color.DARKBLUE);
+        titleLabel.setEffect(dropShadow);
+
         titleLabel.setTextAlignment(TextAlignment.CENTER);
 
-        thePane = new FlowPane(Orientation.HORIZONTAL);
-        thePane.setHgap(10);
-        paneLabel = new Label("Choose one of the following options to play the game:");
-        thePane.getChildren().addAll(paneLabel);
+
 
         playSinglePlayerGame = new Button("Play BlackJack against a computer");
         playWithAI = new Button("Simulate the game using Artificial Intelligence");
 
-        theRoot.getChildren().addAll(titleLabel, playSinglePlayerGame, playWithAI);
+        mainRoot.getChildren().addAll(titleLabel, playSinglePlayerGame, playWithAI);
     }
 
-    public VBox getTheRoot() {
-        return theRoot;
+    public VBox getMainRoot() {
+        return mainRoot;
     }
 
     public Button getPlaySinglePlayerGame() {

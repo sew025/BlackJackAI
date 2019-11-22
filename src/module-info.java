@@ -4,5 +4,6 @@ module csci205FinalProject {
     requires javafx.fxml;
     requires javafx.base;
     requires java.desktop;
+    requires javafx.media;
     opens LandingPageGUI;
 }
