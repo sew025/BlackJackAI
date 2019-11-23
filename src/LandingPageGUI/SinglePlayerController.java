@@ -22,4 +22,17 @@ package LandingPageGUI;
  * controlling portion of the GUI, this is the part that reacts to what happens when the player hits controls on the screen
  */
 public class SinglePlayerController {
+    /**
+     * the model
+     */
+    private SinglePlayerModel theModel;
+    /**
+     * the view
+     */
+    private SinglePlayerView theView;
+
+    public SinglePlayerController(SinglePlayerModel theModel, SinglePlayerView theView) {
+        this.theModel = theModel;
+        this.theView = theView;
+    }
 }

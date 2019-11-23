@@ -130,4 +130,60 @@ public class SinglePlayerView {
         gameRoot.getChildren().add(dealerSide);
         gameRoot.getChildren().add(playerSide);
     }
+
+    public VBox getGameRoot() {
+        return gameRoot;
+    }
+
+    public HBox getDealerSide() {
+        return dealerSide;
+    }
+
+    public HBox getPlayerSide() {
+        return playerSide;
+    }
+
+    public VBox getDealerGameHalf() {
+        return dealerGameHalf;
+    }
+
+    public VBox getPlayerGameHalf() {
+        return playerGameHalf;
+    }
+
+    public HBox getDealerHand() {
+        return dealerHand;
+    }
+
+    public HBox getPlayerHand() {
+        return playerHand;
+    }
+
+    public HBox getDealerScore() {
+        return dealerScore;
+    }
+
+    public HBox getPlayerScore() {
+        return playerScore;
+    }
+
+    public VBox getButtonArea() {
+        return buttonArea;
+    }
+
+    public Button getHitButton() {
+        return hitButton;
+    }
+
+    public Button getStandButton() {
+        return standButton;
+    }
+
+    public VBox getDeckArea() {
+        return deckArea;
+    }
+
+    public Rectangle getDeck() {
+        return deck;
+    }
 }
