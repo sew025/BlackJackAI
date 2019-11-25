@@ -19,6 +19,7 @@
 package DeckOfCards;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -30,6 +31,13 @@ import java.util.Random;
  * and then return the shape so that it can be displayed on the scene.
  */
 public class GetCard {
+    /**
+     * Creates a rectangle object with the picture of your card placed on the fill.
+     * Chooses the suit for the card at random. Uses the Card Enum (in Blackjack)
+     * to determine which card needs to be displayed.
+     * @param   cardValue   The card that was drawn and needs to be displayed
+     * @return  newCard     A rectangle with a picture of the card on it
+     */
     public static Rectangle getAppropriateCard(Blackjack.Cards cardValue) {
         Rectangle newCard = createRectangle();
         switch (cardValue) {
@@ -89,20 +97,39 @@ public class GetCard {
         return newCard;
     }
 
+    /**
+     * Create the rectangle object that we are going to put the face of the card
+     * on
+     * @return  newCard The blank card
+     */
     public static Rectangle createRectangle() {
         Rectangle newCard = new Rectangle(72, 96);
+        newCard.setStroke(Color.RED);
+        newCard.setStrokeWidth(5);
         return newCard;
     }
 
+    /**
+     * Gets the appropriate card image. Chooses from one of the four possible suits
+     * at random, by random choosing an image from the directory that has that card's
+     * stock images.
+     * @param cardType      The card's value (i.e. one, ace, king...)
+     * @return cardPicture  The picture of the card to be put on a rectangle
+     */
     public static Image getFace(String cardType) {
         File cardDirectory = new File("src/DeckOfCards/" + cardType);
         File[] cardFiles = cardDirectory.listFiles();
         Random randomSuit = new Random();
         File chosenSuit = cardFiles[randomSuit.nextInt(cardFiles.length)];
-        final Image cardPicture = new Image(chosenSuit.toURI().toString());
-        return cardPicture;
+        final Image cardImage = new Image(chosenSuit.toURI().toString());
+        return cardImage;
     }
 
+    /**
+     * Creates a rectangle with a face-down card on it. This will be used for the
+     * images of the deck of cards and the dealer's hand.
+     * @return  newCard The face-down card on a rectangle
+     */
     public static Rectangle createFaceDownCard() {
         Rectangle newCard = createRectangle();
         File cardBack = new File("src/DeckOfCards/CardBack/CardBack.png");
