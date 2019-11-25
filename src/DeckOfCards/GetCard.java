@@ -103,7 +103,7 @@ public class GetCard {
         return cardPicture;
     }
 
-    public static Rectangle createFaceDownDeck() {
+    public static Rectangle createFaceDownCard() {
         Rectangle newCard = createRectangle();
         File cardBack = new File("src/DeckOfCards/CardBack/CardBack.png");
         final Image cardPicture = new Image(cardBack.toURI().toString());
