@@ -22,4 +22,8 @@ package LandingPageGUI;
  * This is the functional part of the GUI, in the model we will be doing everything that requires the game to run and perform the game of blackjack
  */
 public class SinglePlayerModel {
+    private int dealerScore = 0;
+    private int playerScore = 0;
+    private int numDealerCards = 0;
+    private int numPlayerCards = 0;
 }
