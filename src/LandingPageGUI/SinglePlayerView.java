@@ -83,12 +83,12 @@ public class SinglePlayerView {
         dealerGameHalf = new VBox(10);
         dealerGameHalf.setMinWidth(400);
         dealerGameHalf.setMinHeight(300);
+        dealerGameHalf.setAlignment(Pos.CENTER);
 
         dealerHand = new HBox();
         dealerHand.setSpacing(2);
         dealerHand.setMinWidth(200);
         dealerHand.setMinHeight(150);
-
 
         dealerScore = new HBox(10);
         dealerScore.setMinHeight(50);
@@ -122,6 +122,7 @@ public class SinglePlayerView {
         playerGameHalf = new VBox(10);
         playerGameHalf.setMinWidth(400);
         playerGameHalf.setMinHeight(300);
+        playerGameHalf.setAlignment(Pos.CENTER);
 
         playerHand = new HBox();
         playerHand.setSpacing(2);

@@ -24,6 +24,7 @@ import Blackjack.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
+import javafx.scene.control.Label;
 
 /**
  * controlling portion of the GUI, this is the part that reacts to what happens when the player hits controls on the screen
@@ -75,10 +76,26 @@ public class SinglePlayerController {
             player = new Player(pHand,startPScore);
             dealer = new Dealer(dHand,startDScore);
 
-            Label dealerFirst = new Label(Integer.toString(dealer.getDealerHand().get(0)));
-            Label dealerSecond = new Label(Integer.toString(dealer.getDealerHand().get(1)));
-            //theView.getD1()
+            String dealerFirst = Integer.toString(dealer.getDealerHand().get(0));
+            String dealerSecond = Integer.toString(dealer.getDealerHand().get(1));
+
+            String playerFirst = Integer.toString(player.getPlayerHand().get(0));
+            String playerSecond = Integer.toString(player.getPlayerHand().get(1));
+
+            Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+            Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
+
+            theView.getDealerScore().getChildren().add(dealerScore);
+            theView.getPlayerScore().getChildren().add(playerScore);
+
+            theView.getD1().setAccessibleText(dealerFirst);
+            theView.getD2().setAccessibleText(dealerSecond);
+
+            theView.getP1().setAccessibleText(playerFirst);
+            theView.getP2().setAccessibleText(playerSecond);
+
             theView.getDealerHand().getChildren().addAll(theView.getD1(),theView.getD2());
+            theView.getPlayerHand().getChildren().addAll(theView.getP1(),theView.getP2());
         });
     }
 }
