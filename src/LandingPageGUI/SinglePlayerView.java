@@ -50,21 +50,6 @@ public class SinglePlayerView {
     private VBox deckArea;
     private Rectangle deck;
 
-    //cards
-    private Rectangle d1 = new Rectangle(30,45,Color.RED);
-    private Rectangle d2 = new Rectangle(30,45,Color.RED);
-    private Rectangle d3 = new Rectangle(30,45,Color.RED);
-    private Rectangle d4 = new Rectangle(30,45,Color.RED);
-    private Rectangle d5 = new Rectangle(30,45,Color.RED);
-    private Rectangle d6 = new Rectangle(30,45,Color.RED);
-
-    private Rectangle p1 = new Rectangle(30,45,Color.RED);
-    private Rectangle p2 = new Rectangle(30,45,Color.RED);
-    private Rectangle p3 = new Rectangle(30,45,Color.RED);
-    private Rectangle p4 = new Rectangle(30,45,Color.RED);
-    private Rectangle p5 = new Rectangle(30,45,Color.RED);
-    private Rectangle p6 = new Rectangle(30,45,Color.RED);
-
 
     public SinglePlayerView(SinglePlayerModel theModel) {
         this.theModel = theModel;
@@ -215,53 +200,5 @@ public class SinglePlayerView {
 
     public Rectangle getDeck() {
         return deck;
-    }
-
-    public Rectangle getD1() {
-        return d1;
-    }
-
-    public Rectangle getD2() {
-        return d2;
-    }
-
-    public Rectangle getD3() {
-        return d3;
-    }
-
-    public Rectangle getD4() {
-        return d4;
-    }
-
-    public Rectangle getD5() {
-        return d5;
-    }
-
-    public Rectangle getD6() {
-        return d6;
-    }
-
-    public Rectangle getP1() {
-        return p1;
-    }
-
-    public Rectangle getP2() {
-        return p2;
-    }
-
-    public Rectangle getP3() {
-        return p3;
-    }
-
-    public Rectangle getP4() {
-        return p4;
-    }
-
-    public Rectangle getP5() {
-        return p5;
-    }
-
-    public Rectangle getP6() {
-        return p6;
     }
 }

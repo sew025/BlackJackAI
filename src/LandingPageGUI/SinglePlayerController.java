@@ -18,6 +18,7 @@
  */
 package LandingPageGUI;
 
+import Blackjack.Cards;
 import Blackjack.Dealer;
 import Blackjack.Deck;
 import Blackjack.Player;
@@ -49,14 +50,24 @@ public class SinglePlayerController {
      * make a dealer
      */
     private Dealer dealer;
+    /**
+     * the game deck
+     */
+    private Deck deck = new Deck();
+
 
     public SinglePlayerController(SinglePlayerModel theModel, SinglePlayerView theView) {
         this.theModel = theModel;
         this.theView = theView;
 
         theView.getDeck().setOnMouseClicked(mouseEvent -> {
-            Deck deck = new Deck();
+            deck = new Deck();
             deck.shuffle();
+            theView.getPlayerHand().getChildren().clear();
+            theView.getDealerHand().getChildren().clear();
+            theView.getPlayerScore().getChildren().clear();
+            theView.getDealerScore().getChildren().clear();
+
             //make the first two hands
             ArrayList<Integer> pHand = new ArrayList<>();
             ArrayList<Integer> dHand = new ArrayList<>();
@@ -93,6 +104,39 @@ public class SinglePlayerController {
 
             theView.getDealerHand().getChildren().addAll(d1,d2);
             theView.getPlayerHand().getChildren().addAll(p1,p2);
+
+            if(player.getScore()==21){
+                theModel.blackjackMsg();
+            }
+        });
+
+        theView.getHitButton().setOnAction(actionEvent -> {
+            //all the functional set up
+            int tempNum = deck.getDeck().get(0);
+            deck.getDeck().remove(0);
+            player.getPlayerHand().add(tempNum);
+
+            Rectangle tempRec = GetCard.getAppropriateCard(theModel.determineCard(tempNum));
+            theView.getPlayerHand().getChildren().add(tempRec);
+
+            theView.getPlayerScore().getChildren().clear();
+            Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
+            theView.getPlayerScore().getChildren().add(playerScore);
+
+            //check and see if the player lost
+            if(player.getScore()>21){
+                if (player.getPlayerHand().contains(11)){
+                    theView.getPlayerHand().getChildren().clear();
+                    player.aceSwitch();
+                    for (int i = 0; i < player.getPlayerHand().size(); i++) {
+                        Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(i)));
+                        theView.getPlayerHand().getChildren().add(newRec);
+                    }
+                }
+                else{
+                    theModel.generateLossMsg();
+                }
+            }
         });
     }
 

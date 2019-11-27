@@ -19,6 +19,7 @@
 package LandingPageGUI;
 
 import Blackjack.Cards;
+import javafx.scene.control.Alert;
 
 /**
  * This is the functional part of the GUI, in the model we will be doing everything that requires the game to run and perform the game of blackjack
@@ -77,5 +78,21 @@ public class SinglePlayerModel {
                 break;
         }
         return ans;
+    }
+
+    public void generateLossMsg() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("You Busted");
+        alert.setHeaderText("Better luck next time");
+        alert.setContentText("Click on the deck to play again");
+        alert.show();
+    }
+
+    public void blackjackMsg() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("You got a natural blackjack");
+        alert.setHeaderText("You have won!");
+        alert.setContentText("You have 21 on just 2 cards");
+        alert.show();
     }
 }
