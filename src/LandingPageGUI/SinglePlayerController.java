@@ -24,7 +24,10 @@ import Blackjack.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
+
+import DeckOfCards.GetCard;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Rectangle;
 
 /**
  * controlling portion of the GUI, this is the part that reacts to what happens when the player hits controls on the screen
@@ -76,26 +79,21 @@ public class SinglePlayerController {
             player = new Player(pHand,startPScore);
             dealer = new Dealer(dHand,startDScore);
 
-            String dealerFirst = Integer.toString(dealer.getDealerHand().get(0));
-            String dealerSecond = Integer.toString(dealer.getDealerHand().get(1));
-
-            String playerFirst = Integer.toString(player.getPlayerHand().get(0));
-            String playerSecond = Integer.toString(player.getPlayerHand().get(1));
-
             Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
             Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
 
             theView.getDealerScore().getChildren().add(dealerScore);
             theView.getPlayerScore().getChildren().add(playerScore);
 
-            theView.getD1().setAccessibleText(dealerFirst);
-            theView.getD2().setAccessibleText(dealerSecond);
+            Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
+            Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
 
-            theView.getP1().setAccessibleText(playerFirst);
-            theView.getP2().setAccessibleText(playerSecond);
+            Rectangle p1 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(0)));
+            Rectangle p2 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(1)));
 
-            theView.getDealerHand().getChildren().addAll(theView.getD1(),theView.getD2());
-            theView.getPlayerHand().getChildren().addAll(theView.getP1(),theView.getP2());
+            theView.getDealerHand().getChildren().addAll(d1,d2);
+            theView.getPlayerHand().getChildren().addAll(p1,p2);
         });
     }
+
 }

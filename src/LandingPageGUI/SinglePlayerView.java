@@ -87,7 +87,7 @@ public class SinglePlayerView {
 
         dealerHand = new HBox();
         dealerHand.setSpacing(2);
-        dealerHand.setMinWidth(200);
+        dealerHand.setMinWidth(400);
         dealerHand.setMinHeight(150);
 
         dealerScore = new HBox(10);
@@ -126,7 +126,7 @@ public class SinglePlayerView {
 
         playerHand = new HBox();
         playerHand.setSpacing(2);
-        playerHand.setMinWidth(200);
+        playerHand.setMinWidth(400);
         playerHand.setMinHeight(150);
 
         playerScore = new HBox(10);

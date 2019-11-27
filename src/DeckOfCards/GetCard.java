@@ -105,7 +105,7 @@ public class GetCard {
     public static Rectangle createRectangle() {
         Rectangle newCard = new Rectangle(72, 96);
         newCard.setStroke(Color.RED);
-        newCard.setStrokeWidth(5);
+        newCard.setStrokeWidth(2);
         return newCard;
     }
 
