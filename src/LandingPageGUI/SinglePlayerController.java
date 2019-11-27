@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 import DeckOfCards.GetCard;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -101,6 +102,7 @@ public class SinglePlayerController {
 
             //originally only set up the player half
             Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
+            playerScore.setTextFill(Color.WHITE);
             theView.getPlayerScore().getChildren().add(playerScore);
 
             Rectangle p1 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(0)));
@@ -109,6 +111,7 @@ public class SinglePlayerController {
 
             //set up dealer side with blank cards
             Label dealerScore = new Label("Score: -----");
+            dealerScore.setTextFill(Color.WHITE);
             theView.getDealerScore().getChildren().add(dealerScore);
 
             Rectangle blank1 = GetCard.createFaceDownCard();
@@ -138,6 +141,7 @@ public class SinglePlayerController {
 
             theView.getPlayerScore().getChildren().clear();
             Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
+            playerScore.setTextFill(Color.WHITE);
             theView.getPlayerScore().getChildren().add(playerScore);
 
             //check and see if the player lost
@@ -151,6 +155,7 @@ public class SinglePlayerController {
                     }
                     theView.getPlayerScore().getChildren().clear();
                     Label updatedScore = new Label("Score: " + Integer.toString(player.getScore()));
+                    updatedScore.setTextFill(Color.WHITE);
                     theView.getPlayerScore().getChildren().add(updatedScore);
                 }
                 else{
@@ -163,6 +168,7 @@ public class SinglePlayerController {
                 theView.getDealerHand().getChildren().clear();
 
                 Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                dealerScore.setTextFill(Color.WHITE);
                 theView.getDealerScore().getChildren().add(dealerScore);
 
                 Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
@@ -183,6 +189,7 @@ public class SinglePlayerController {
 
                     theView.getDealerScore().getChildren().clear();
                     Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                    dScore.setTextFill(Color.WHITE);
                     theView.getDealerScore().getChildren().add(dScore);
 
                     if(dealer.getScore()>21){
@@ -195,6 +202,7 @@ public class SinglePlayerController {
                             }
                             theView.getDealerScore().getChildren().clear();
                             Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                            updatedScore.setTextFill(Color.WHITE);
                             theView.getDealerScore().getChildren().add(updatedScore);
                         }
                         else{
@@ -217,6 +225,7 @@ public class SinglePlayerController {
             theView.getDealerHand().getChildren().clear();
 
             Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+            dealerScore.setTextFill(Color.WHITE);
             theView.getDealerScore().getChildren().add(dealerScore);
 
             Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
@@ -237,6 +246,7 @@ public class SinglePlayerController {
 
                 theView.getDealerScore().getChildren().clear();
                 Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                dScore.setTextFill(Color.WHITE);
                 theView.getDealerScore().getChildren().add(dScore);
 
                 if(dealer.getScore()>21){
@@ -249,6 +259,7 @@ public class SinglePlayerController {
                         }
                         theView.getDealerScore().getChildren().clear();
                         Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                        updatedScore.setTextFill(Color.WHITE);
                         theView.getDealerScore().getChildren().add(updatedScore);
                     }
                     else{

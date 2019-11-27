@@ -23,8 +23,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -49,6 +49,7 @@ public class SinglePlayerView {
     private Button standButton;
     private VBox deckArea;
     private Rectangle deck;
+    private Button backButton;
 
     /**
      * set up the original scene of the game without any cards and such, just the deck and the buttons
@@ -63,6 +64,12 @@ public class SinglePlayerView {
         gameRoot.setMinHeight(600);
         gameRoot.setMinWidth(600);
         gameRoot.setAlignment(Pos.CENTER);
+
+        final Image backgroundImage = new Image("https://cdn10.bigcommerce.com/s-3h3c4/products/1846/images/3146/pool-table-felt-simonis-860-green-7ft__29747.1488904154.500.659.jpg?c=2");
+        BackgroundImage jack = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, false));
+        Background background = new Background(jack);
+        gameRoot.setBackground(background);
 
         //making the top half
         dealerSide = new HBox();
@@ -92,6 +99,7 @@ public class SinglePlayerView {
         deckArea.setAlignment(Pos.CENTER);
 
         Label instructions = new Label("Click on the deck to deal");
+        instructions.setTextFill(Color.WHITE);
 
         deck = new Rectangle();
         deck.setHeight(150);
@@ -130,8 +138,11 @@ public class SinglePlayerView {
         buttonArea.setMinWidth(200);
         buttonArea.setAlignment(Pos.CENTER);
 
+        backButton = new Button("Return to Main Menu");
+
         Label move = new Label("Click hit or stand");
         move.setAlignment(Pos.CENTER);
+        move.setTextFill(Color.WHITE);
 
         hitButton  = new Button("Hit");
         hitButton.setMaxHeight(100);
@@ -141,7 +152,7 @@ public class SinglePlayerView {
         standButton.setMaxHeight(100);
         standButton.setMaxWidth(100);
 
-        buttonArea.getChildren().addAll(move,hitButton,standButton);
+        buttonArea.getChildren().addAll(move,hitButton,standButton,backButton);
 
         playerSide.getChildren().addAll(playerGameHalf,buttonArea);
 
@@ -180,5 +191,9 @@ public class SinglePlayerView {
 
     public Rectangle getDeck() {
         return deck;
+    }
+
+    public Button getBackButton() {
+        return backButton;
     }
 }

@@ -113,6 +113,9 @@ public class LandingPageMain extends Application {
         theView.getPlaySinglePlayerGame().setOnAction(actionEvent -> {
             primaryStage.setScene(gameScene);
         });
+        singleView.getBackButton().setOnAction(actionEvent -> {
+            primaryStage.setScene(openingScene);
+        });
 
         primaryStage.setTitle("Welcome to BlackJack!");
         primaryStage.setScene(openingScene);
