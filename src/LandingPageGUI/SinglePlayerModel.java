@@ -83,7 +83,13 @@ public class SinglePlayerModel {
     }
 
     public void determineWinner(Player player, Dealer dealer){
-        if(player.getScore()>dealer.getScore()){
+        if(player.getScore()>21){
+            generateLossMsg();
+        }
+        else if(dealer.getScore()>21){
+            dealerBust();
+        }
+        else if(player.getScore()>dealer.getScore()){
             playerHigher();
         }
         else if(player.getScore()<dealer.getScore()){

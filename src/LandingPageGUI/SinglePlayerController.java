@@ -154,6 +154,10 @@ public class SinglePlayerController {
                 Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
                 theView.getDealerHand().getChildren().addAll(d1,d2);
 
+                if(dealer.getScore()==21){
+                    theModel.dealerBlackjack();
+                }
+
                 while(dealer.onlyHitOrStand()){
                     int nextNum = deck.getDeck().get(0);
                     deck.getDeck().remove(0);
@@ -179,7 +183,7 @@ public class SinglePlayerController {
                             theView.getDealerScore().getChildren().add(updatedScore);
                         }
                         else{
-                            theModel.dealerBust();
+                            break;
                         }
                     }
                 }
@@ -198,6 +202,10 @@ public class SinglePlayerController {
             Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
             Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
             theView.getDealerHand().getChildren().addAll(d1,d2);
+
+            if(dealer.getScore()==21){
+                theModel.dealerBlackjack();
+            }
 
             while(dealer.onlyHitOrStand()){
                 int tempNum = deck.getDeck().get(0);
@@ -224,7 +232,7 @@ public class SinglePlayerController {
                         theView.getDealerScore().getChildren().add(updatedScore);
                     }
                     else{
-                        theModel.dealerBust();
+                        break;
                     }
                 }
             }
