@@ -164,7 +164,7 @@ public class SinglePlayerController {
 
                     theView.getDealerScore().getChildren().clear();
                     Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
-                    theView.getPlayerScore().getChildren().add(dScore);
+                    theView.getDealerScore().getChildren().add(dScore);
 
                     if(dealer.getScore()>21&&dealer.getDealerHand().contains(11)){
                         theView.getDealerHand().getChildren().clear();
@@ -181,6 +181,7 @@ public class SinglePlayerController {
                         theModel.dealerBust();
                     }
                 }
+                theModel.determineWinner(player,dealer);
             }
         });
 
@@ -206,7 +207,7 @@ public class SinglePlayerController {
 
                 theView.getDealerScore().getChildren().clear();
                 Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
-                theView.getPlayerScore().getChildren().add(dScore);
+                theView.getDealerScore().getChildren().add(dScore);
 
                 if(dealer.getScore()>21&&dealer.getDealerHand().contains(11)){
                     theView.getDealerHand().getChildren().clear();
@@ -223,6 +224,7 @@ public class SinglePlayerController {
                     theModel.dealerBust();
                 }
             }
+            theModel.determineWinner(player,dealer);
         });
     }
 

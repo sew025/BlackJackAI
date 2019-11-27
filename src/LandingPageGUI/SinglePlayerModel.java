@@ -19,6 +19,8 @@
 package LandingPageGUI;
 
 import Blackjack.Cards;
+import Blackjack.Dealer;
+import Blackjack.Player;
 import javafx.scene.control.Alert;
 
 /**
@@ -78,6 +80,18 @@ public class SinglePlayerModel {
                 break;
         }
         return ans;
+    }
+
+    public void determineWinner(Player player, Dealer dealer){
+        if(player.getScore()>dealer.getScore()){
+            playerHigher();
+        }
+        else if(player.getScore()<dealer.getScore()){
+            dealerHigher();
+        }
+        else{
+            pushMsg();
+        }
     }
 
     public void generateLossMsg() {
