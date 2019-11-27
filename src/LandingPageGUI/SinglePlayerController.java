@@ -55,11 +55,20 @@ public class SinglePlayerController {
      */
     private Deck deck = new Deck();
 
-
+    /**
+     * the functionality of the game, whenever anything is clicked the game reacts and continues playing and such
+     * @param theModel - the model of the game
+     * @param theView - the view part of the game
+     * @author Jack Otto
+     */
     public SinglePlayerController(SinglePlayerModel theModel, SinglePlayerView theView) {
         this.theModel = theModel;
         this.theView = theView;
 
+        /**
+         * action even when the deck is clicked, the game is reset and the dealer and player are each dealt two cards
+         * @author Jack Otto
+         */
         theView.getDeck().setOnMouseClicked(mouseEvent -> {
             deck = new Deck();
             deck.shuffle();
@@ -112,6 +121,12 @@ public class SinglePlayerController {
             }
         });
 
+        /**
+         * action event for when the hit button is clicked, the game determines if the player is over 21 has 21 or under 21 and then reacts
+         * by either beginning the dealers turn or telling the player they busted
+         * if the dealer begins, then the same thing happens for the dealer and at the end determines who wins
+         * @author Jack Otto
+         */
         theView.getHitButton().setOnAction(actionEvent -> {
             //all the functional set up
             int tempNum = deck.getDeck().get(0);
@@ -191,6 +206,11 @@ public class SinglePlayerController {
             }
         });
 
+        /**
+         * action event for when the stand button is clicked, which begins the dealers turn and determines if they have 21 are over 21 or under 21
+         * if the dealer stands then the game determines who wins by score of each player
+         * @author Jack Otto
+         */
         theView.getStandButton().setOnAction(actionEvent -> {
             //set up the dealer
             theView.getDealerScore().getChildren().clear();

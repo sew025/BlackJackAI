@@ -28,6 +28,12 @@ import javafx.scene.control.Alert;
  */
 public class SinglePlayerModel {
 
+    /**
+     * determines what card enumeration to use given the integer value of the card
+     * @param num - the number value of the card
+     * @return - a card enumeration
+     * @author Jack Otto
+     */
     public Blackjack.Cards determineCard(int num){
         Cards ans = null;
         switch (num){
@@ -82,6 +88,12 @@ public class SinglePlayerModel {
         return ans;
     }
 
+    /**
+     * determine who has won the game
+     * @param player - the player object with a hand and a score
+     * @param dealer - the dealer object with a hand and a score
+     * @author Jack Otto
+     */
     public void determineWinner(Player player, Dealer dealer){
         if(player.getScore()>21){
             generateLossMsg();
@@ -100,6 +112,10 @@ public class SinglePlayerModel {
         }
     }
 
+    /**
+     * Function meaning the player busted
+     * @author Jack Otto
+     */
     public void generateLossMsg() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("You Busted");
@@ -107,7 +123,10 @@ public class SinglePlayerModel {
         alert.setContentText("Click on the deck to play again");
         alert.show();
     }
-
+    /**
+     * Function meaning the player has a natural
+     * @author Jack Otto
+     */
     public void blackjackMsg() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("You got a natural blackjack");
@@ -115,7 +134,10 @@ public class SinglePlayerModel {
         alert.setContentText("You have 21 on just 2 cards");
         alert.show();
     }
-
+    /**
+     * Function meaning the dealer busted
+     * @author Jack Otto
+     */
     public void dealerBust() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Dealer Busted");
@@ -123,7 +145,10 @@ public class SinglePlayerModel {
         alert.setContentText("The dealer has gone over 21");
         alert.show();
     }
-
+    /**
+     * Function meaning the dealer has a natural
+     * @author Jack Otto
+     */
     public void dealerBlackjack() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Dealer has a natural blackjack");
@@ -131,7 +156,10 @@ public class SinglePlayerModel {
         alert.setContentText("The dealer has 21 on just 2 cards");
         alert.show();
     }
-
+    /**
+     * Function meaning the player has a higher score
+     * @author Jack Otto
+     */
     public void playerHigher() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Game winning message");
@@ -139,7 +167,10 @@ public class SinglePlayerModel {
         alert.setContentText("You scored higher than the dealer");
         alert.show();
     }
-
+    /**
+     * Function meaning the dealer has a higher score
+     * @author Jack Otto
+     */
     public void dealerHigher() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Game losing message");
@@ -147,7 +178,10 @@ public class SinglePlayerModel {
         alert.setContentText("The dealer scored higher than you");
         alert.show();
     }
-
+    /**
+     * Function meaning the player and dealer have the same score
+     * @author Jack Otto
+     */
     public void pushMsg() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Game ending message");

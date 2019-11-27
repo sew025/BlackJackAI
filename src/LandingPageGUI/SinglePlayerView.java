@@ -50,7 +50,11 @@ public class SinglePlayerView {
     private VBox deckArea;
     private Rectangle deck;
 
-
+    /**
+     * set up the original scene of the game without any cards and such, just the deck and the buttons
+     * @param theModel - the model of the game
+     * @author Jack Otto
+     */
     public SinglePlayerView(SinglePlayerModel theModel) {
         this.theModel = theModel;
 
@@ -150,22 +154,6 @@ public class SinglePlayerView {
         return gameRoot;
     }
 
-    public HBox getDealerSide() {
-        return dealerSide;
-    }
-
-    public HBox getPlayerSide() {
-        return playerSide;
-    }
-
-    public VBox getDealerGameHalf() {
-        return dealerGameHalf;
-    }
-
-    public VBox getPlayerGameHalf() {
-        return playerGameHalf;
-    }
-
     public HBox getDealerHand() {
         return dealerHand;
     }
@@ -182,20 +170,12 @@ public class SinglePlayerView {
         return playerScore;
     }
 
-    public VBox getButtonArea() {
-        return buttonArea;
-    }
-
     public Button getHitButton() {
         return hitButton;
     }
 
     public Button getStandButton() {
         return standButton;
-    }
-
-    public VBox getDeckArea() {
-        return deckArea;
     }
 
     public Rectangle getDeck() {
