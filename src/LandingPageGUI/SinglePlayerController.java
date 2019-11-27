@@ -132,6 +132,9 @@ public class SinglePlayerController {
                         Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(i)));
                         theView.getPlayerHand().getChildren().add(newRec);
                     }
+                    theView.getPlayerScore().getChildren().clear();
+                    Label updatedScore = new Label("Score: " + Integer.toString(player.getScore()));
+                    theView.getPlayerScore().getChildren().add(updatedScore);
                 }
                 else{
                     theModel.generateLossMsg();
