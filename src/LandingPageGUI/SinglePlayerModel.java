@@ -118,6 +118,14 @@ public class SinglePlayerModel {
         alert.show();
     }
 
+    public void dealerBlackjack() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dealer has a natural blackjack");
+        alert.setHeaderText("You have lost");
+        alert.setContentText("The dealer has 21 on just 2 cards");
+        alert.show();
+    }
+
     public void playerHigher() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Game winning message");

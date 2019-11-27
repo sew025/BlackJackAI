@@ -166,19 +166,21 @@ public class SinglePlayerController {
                     Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
                     theView.getDealerScore().getChildren().add(dScore);
 
-                    if(dealer.getScore()>21&&dealer.getDealerHand().contains(11)){
-                        theView.getDealerHand().getChildren().clear();
-                        dealer.aceSwitch();
-                        for (int i = 0; i < dealer.getDealerHand().size(); i++) {
-                            Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(i)));
-                            theView.getDealerHand().getChildren().add(newRec);
+                    if(dealer.getScore()>21){
+                        if(dealer.getDealerHand().contains(11)){
+                            theView.getDealerHand().getChildren().clear();
+                            dealer.aceSwitch();
+                            for (int i = 0; i < dealer.getDealerHand().size(); i++) {
+                                Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(i)));
+                                theView.getDealerHand().getChildren().add(newRec);
+                            }
+                            theView.getDealerScore().getChildren().clear();
+                            Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                            theView.getDealerScore().getChildren().add(updatedScore);
                         }
-                        theView.getDealerScore().getChildren().clear();
-                        Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
-                        theView.getDealerScore().getChildren().add(updatedScore);
-                    }
-                    else{
-                        theModel.dealerBust();
+                        else{
+                            theModel.dealerBust();
+                        }
                     }
                 }
                 theModel.determineWinner(player,dealer);
@@ -209,19 +211,21 @@ public class SinglePlayerController {
                 Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
                 theView.getDealerScore().getChildren().add(dScore);
 
-                if(dealer.getScore()>21&&dealer.getDealerHand().contains(11)){
-                    theView.getDealerHand().getChildren().clear();
-                    dealer.aceSwitch();
-                    for (int i = 0; i < dealer.getDealerHand().size(); i++) {
-                        Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(i)));
-                        theView.getDealerHand().getChildren().add(newRec);
+                if(dealer.getScore()>21){
+                    if(dealer.getDealerHand().contains(11)){
+                        theView.getDealerHand().getChildren().clear();
+                        dealer.aceSwitch();
+                        for (int i = 0; i < dealer.getDealerHand().size(); i++) {
+                            Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(i)));
+                            theView.getDealerHand().getChildren().add(newRec);
+                        }
+                        theView.getDealerScore().getChildren().clear();
+                        Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                        theView.getDealerScore().getChildren().add(updatedScore);
                     }
-                    theView.getDealerScore().getChildren().clear();
-                    Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
-                    theView.getDealerScore().getChildren().add(updatedScore);
-                }
-                else{
-                    theModel.dealerBust();
+                    else{
+                        theModel.dealerBust();
+                    }
                 }
             }
             theModel.determineWinner(player,dealer);
