@@ -90,21 +90,23 @@ public class SinglePlayerController {
             player = new Player(pHand,startPScore);
             dealer = new Dealer(dHand,startDScore);
 
-            Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+            //originally only set up the player half
             Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
-
-            theView.getDealerScore().getChildren().add(dealerScore);
             theView.getPlayerScore().getChildren().add(playerScore);
-
-            Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
-            Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
 
             Rectangle p1 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(0)));
             Rectangle p2 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(1)));
-
-            theView.getDealerHand().getChildren().addAll(d1,d2);
             theView.getPlayerHand().getChildren().addAll(p1,p2);
 
+            //set up dealer side with blank cards
+            Label dealerScore = new Label("Score: -----");
+            theView.getDealerScore().getChildren().add(dealerScore);
+
+            Rectangle blank1 = GetCard.createFaceDownCard();
+            Rectangle blank2 = GetCard.createFaceDownCard();
+            theView.getDealerHand().getChildren().addAll(blank1,blank2);
+
+            //if player has blackjack they win
             if(player.getScore()==21){
                 theModel.blackjackMsg();
             }
@@ -138,6 +140,87 @@ public class SinglePlayerController {
                 }
                 else{
                     theModel.generateLossMsg();
+                }
+            }
+            else if(player.getScore()==21){
+                //set up the dealer
+                theView.getDealerScore().getChildren().clear();
+                theView.getDealerHand().getChildren().clear();
+
+                Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                theView.getDealerScore().getChildren().add(dealerScore);
+
+                Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
+                Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
+                theView.getDealerHand().getChildren().addAll(d1,d2);
+
+                while(dealer.onlyHitOrStand()){
+                    int nextNum = deck.getDeck().get(0);
+                    deck.getDeck().remove(0);
+                    dealer.getDealerHand().add(nextNum);
+
+                    Rectangle tempRect = GetCard.getAppropriateCard(theModel.determineCard(nextNum));
+                    theView.getDealerHand().getChildren().add(tempRect);
+
+                    theView.getDealerScore().getChildren().clear();
+                    Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                    theView.getPlayerScore().getChildren().add(dScore);
+
+                    if(dealer.getScore()>21&&dealer.getDealerHand().contains(11)){
+                        theView.getDealerHand().getChildren().clear();
+                        dealer.aceSwitch();
+                        for (int i = 0; i < dealer.getDealerHand().size(); i++) {
+                            Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(i)));
+                            theView.getDealerHand().getChildren().add(newRec);
+                        }
+                        theView.getDealerScore().getChildren().clear();
+                        Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                        theView.getDealerScore().getChildren().add(updatedScore);
+                    }
+                    else{
+                        theModel.dealerBust();
+                    }
+                }
+            }
+        });
+
+        theView.getStandButton().setOnAction(actionEvent -> {
+            //set up the dealer
+            theView.getDealerScore().getChildren().clear();
+            theView.getDealerHand().getChildren().clear();
+
+            Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+            theView.getDealerScore().getChildren().add(dealerScore);
+
+            Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
+            Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
+            theView.getDealerHand().getChildren().addAll(d1,d2);
+
+            while(dealer.onlyHitOrStand()){
+                int tempNum = deck.getDeck().get(0);
+                deck.getDeck().remove(0);
+                dealer.getDealerHand().add(tempNum);
+
+                Rectangle tempRect = GetCard.getAppropriateCard(theModel.determineCard(tempNum));
+                theView.getDealerHand().getChildren().add(tempRect);
+
+                theView.getDealerScore().getChildren().clear();
+                Label dScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                theView.getPlayerScore().getChildren().add(dScore);
+
+                if(dealer.getScore()>21&&dealer.getDealerHand().contains(11)){
+                    theView.getDealerHand().getChildren().clear();
+                    dealer.aceSwitch();
+                    for (int i = 0; i < dealer.getDealerHand().size(); i++) {
+                        Rectangle newRec = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(i)));
+                        theView.getDealerHand().getChildren().add(newRec);
+                    }
+                    theView.getDealerScore().getChildren().clear();
+                    Label updatedScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                    theView.getDealerScore().getChildren().add(updatedScore);
+                }
+                else{
+                    theModel.dealerBust();
                 }
             }
         });

@@ -95,4 +95,36 @@ public class SinglePlayerModel {
         alert.setContentText("You have 21 on just 2 cards");
         alert.show();
     }
+
+    public void dealerBust() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Dealer Busted");
+        alert.setHeaderText("You have won!");
+        alert.setContentText("The dealer has gone over 21");
+        alert.show();
+    }
+
+    public void playerHigher() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Game winning message");
+        alert.setHeaderText("You have won!");
+        alert.setContentText("You scored higher than the dealer");
+        alert.show();
+    }
+
+    public void dealerHigher() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Game losing message");
+        alert.setHeaderText("You have lost");
+        alert.setContentText("The dealer scored higher than you");
+        alert.show();
+    }
+
+    public void pushMsg() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Game ending message");
+        alert.setHeaderText("It's a tie");
+        alert.setContentText("You and the dealer have the same score");
+        alert.show();
+    }
 }
