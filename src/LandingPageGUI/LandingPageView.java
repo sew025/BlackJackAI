@@ -18,7 +18,7 @@
  */
 package LandingPageGUI;
 
-import javafx.geometry.Orientation;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,7 +29,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
-
 
 /**
 * Creates the landing page. It will have a ~~cool~~ background image and it will have
@@ -89,8 +88,6 @@ public class LandingPageView {
         titleLabel.setEffect(dropShadow);
 
         titleLabel.setTextAlignment(TextAlignment.CENTER);
-
-
 
         playSinglePlayerGame = new Button("Play BlackJack against a computer");
         playWithAI = new Button("Simulate the game using Artificial Intelligence");
