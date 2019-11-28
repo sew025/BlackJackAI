@@ -78,6 +78,13 @@ public class SinglePlayerController {
         theView.getDeck().setOnMouseClicked(mouseEvent -> {
             deck = new Deck();
             deck.shuffle();
+
+            //set up the scene
+            theView.getPlayerHand().getChildren().clear();
+            theView.getDealerHand().getChildren().clear();
+            theView.getPlayerScore().getChildren().clear();
+            theView.getDealerScore().getChildren().clear();
+
             makeBet();
         });
 
@@ -255,12 +262,6 @@ public class SinglePlayerController {
                 setCurrentBet(Double.parseDouble(result.get()));
                 total.removeFunds(getCurrentBet());
                 theView.getMoneyAmount().setText(total.toString());
-
-                //set up the scene
-                theView.getPlayerHand().getChildren().clear();
-                theView.getDealerHand().getChildren().clear();
-                theView.getPlayerScore().getChildren().clear();
-                theView.getDealerScore().getChildren().clear();
 
                 //make the first two hands
                 ArrayList<Integer> pHand = new ArrayList<>();
