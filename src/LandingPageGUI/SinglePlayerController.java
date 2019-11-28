@@ -18,16 +18,15 @@
  */
 package LandingPageGUI;
 
-import Blackjack.Cards;
-import Blackjack.Dealer;
-import Blackjack.Deck;
-import Blackjack.Player;
+import Blackjack.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import DeckOfCards.GetCard;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -56,6 +55,12 @@ public class SinglePlayerController {
      */
     private Deck deck = new Deck();
 
+    private Money total = new Money();
+
+    private double currentBet = 0.00;
+
+    private Optional<String> result;
+
     /**
      * the functionality of the game, whenever anything is clicked the game reacts and continues playing and such
      * @param theModel - the model of the game
@@ -73,55 +78,7 @@ public class SinglePlayerController {
         theView.getDeck().setOnMouseClicked(mouseEvent -> {
             deck = new Deck();
             deck.shuffle();
-            theView.getPlayerHand().getChildren().clear();
-            theView.getDealerHand().getChildren().clear();
-            theView.getPlayerScore().getChildren().clear();
-            theView.getDealerScore().getChildren().clear();
-
-            //make the first two hands
-            ArrayList<Integer> pHand = new ArrayList<>();
-            ArrayList<Integer> dHand = new ArrayList<>();
-
-            pHand.add(deck.getDeck().get(0));
-            dHand.add(deck.getDeck().get(1));
-            pHand.add(deck.getDeck().get(2));
-            dHand.add(deck.getDeck().get(3));
-
-            int startPScore = deck.getDeck().get(0) + deck.getDeck().get(2);
-            int startDScore = deck.getDeck().get(1) + deck.getDeck().get(3);
-
-
-            deck.getDeck().remove(0);
-            deck.getDeck().remove(1);
-            deck.getDeck().remove(2);
-            deck.getDeck().remove(3);
-
-            //make the player and dealer passing their hands to them and showing their hand and score
-            player = new Player(pHand,startPScore);
-            dealer = new Dealer(dHand,startDScore);
-
-            //originally only set up the player half
-            Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
-            playerScore.setTextFill(Color.WHITE);
-            theView.getPlayerScore().getChildren().add(playerScore);
-
-            Rectangle p1 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(0)));
-            Rectangle p2 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(1)));
-            theView.getPlayerHand().getChildren().addAll(p1,p2);
-
-            //set up dealer side with blank cards
-            Label dealerScore = new Label("Score: -----");
-            dealerScore.setTextFill(Color.WHITE);
-            theView.getDealerScore().getChildren().add(dealerScore);
-
-            Rectangle blank1 = GetCard.createFaceDownCard();
-            Rectangle blank2 = GetCard.createFaceDownCard();
-            theView.getDealerHand().getChildren().addAll(blank1,blank2);
-
-            //if player has blackjack they win
-            if(player.getScore()==21){
-                theModel.blackjackMsg();
-            }
+            makeBet();
         });
 
         /**
@@ -159,6 +116,18 @@ public class SinglePlayerController {
                     theView.getPlayerScore().getChildren().add(updatedScore);
                 }
                 else{
+                    //show the dealer hand after the player loses
+                    theView.getDealerScore().getChildren().clear();
+                    theView.getDealerHand().getChildren().clear();
+
+                    Label dealerScore = new Label("Score: " + Integer.toString(dealer.getScore()));
+                    dealerScore.setTextFill(Color.WHITE);
+                    theView.getDealerScore().getChildren().add(dealerScore);
+
+                    Rectangle d1 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(0)));
+                    Rectangle d2 = GetCard.getAppropriateCard(theModel.determineCard(dealer.getDealerHand().get(1)));
+                    theView.getDealerHand().getChildren().addAll(d1,d2);
+
                     theModel.generateLossMsg();
                 }
             }
@@ -271,4 +240,75 @@ public class SinglePlayerController {
         });
     }
 
+    public void makeBet(){
+        TextInputDialog dialog = new TextInputDialog("5.00");
+        dialog.setTitle("Betting Area");
+        dialog.setHeaderText("Please place your bet");
+        dialog.setContentText("Enter a number here: ");
+
+        result = dialog.showAndWait();
+        if (result.isPresent()){
+            if(theModel.goodData(result,total.getAmount())){
+                //remove funds first
+                currentBet = Double.parseDouble(result.get());
+                total.removeFunds(currentBet);
+                theView.getMoneyAmount().setText(total.toString());
+
+                //set up the scene
+                theView.getPlayerHand().getChildren().clear();
+                theView.getDealerHand().getChildren().clear();
+                theView.getPlayerScore().getChildren().clear();
+                theView.getDealerScore().getChildren().clear();
+
+                //make the first two hands
+                ArrayList<Integer> pHand = new ArrayList<>();
+                ArrayList<Integer> dHand = new ArrayList<>();
+
+                pHand.add(deck.getDeck().get(0));
+                dHand.add(deck.getDeck().get(1));
+                pHand.add(deck.getDeck().get(2));
+                dHand.add(deck.getDeck().get(3));
+
+                int startPScore = deck.getDeck().get(0) + deck.getDeck().get(2);
+                int startDScore = deck.getDeck().get(1) + deck.getDeck().get(3);
+
+
+                deck.getDeck().remove(0);
+                deck.getDeck().remove(1);
+                deck.getDeck().remove(2);
+                deck.getDeck().remove(3);
+
+                //make the player and dealer passing their hands to them and showing their hand and score
+                player = new Player(pHand,startPScore);
+                dealer = new Dealer(dHand,startDScore);
+
+                //originally only set up the player half
+                Label playerScore = new Label("Score: " + Integer.toString(player.getScore()));
+                playerScore.setTextFill(Color.WHITE);
+                theView.getPlayerScore().getChildren().add(playerScore);
+
+                Rectangle p1 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(0)));
+                Rectangle p2 = GetCard.getAppropriateCard(theModel.determineCard(player.getPlayerHand().get(1)));
+                theView.getPlayerHand().getChildren().addAll(p1,p2);
+
+                //set up dealer side with blank cards
+                Label dealerScore = new Label("Score: -----");
+                dealerScore.setTextFill(Color.WHITE);
+                theView.getDealerScore().getChildren().add(dealerScore);
+
+                Rectangle blank1 = GetCard.createFaceDownCard();
+                Rectangle blank2 = GetCard.createFaceDownCard();
+                theView.getDealerHand().getChildren().addAll(blank1,blank2);
+
+                //if player has blackjack they win
+                if(player.getScore()==21){
+                    theModel.blackjackMsg();
+                }
+            }
+        }
+    }
+
+    public Optional<String> getResult() {
+        return result;
+    }
 }

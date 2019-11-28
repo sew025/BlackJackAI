@@ -49,6 +49,7 @@ public class SinglePlayerView {
     private Button standButton;
     private VBox deckArea;
     private Rectangle deck;
+    private Label moneyAmount = new Label("Total: $100.00");
     private Button backButton;
 
     /**
@@ -107,7 +108,9 @@ public class SinglePlayerView {
         deck.setFill(Color.RED);
         deck.setStroke(Color.BLACK);
 
-        deckArea.getChildren().addAll(instructions,deck);
+        moneyAmount.setTextFill(Color.WHITE);
+
+        deckArea.getChildren().addAll(instructions,deck,moneyAmount);
 
         dealerSide.getChildren().addAll(dealerGameHalf,deckArea);
 
@@ -195,5 +198,9 @@ public class SinglePlayerView {
 
     public Button getBackButton() {
         return backButton;
+    }
+
+    public Label getMoneyAmount() {
+        return moneyAmount;
     }
 }

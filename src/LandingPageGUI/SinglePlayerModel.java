@@ -22,12 +22,14 @@ import Blackjack.Cards;
 import Blackjack.Dealer;
 import Blackjack.Player;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
+
+import java.util.Optional;
 
 /**
  * This is the functional part of the GUI, in the model we will be doing everything that requires the game to run and perform the game of blackjack
  */
 public class SinglePlayerModel {
-
     /**
      * determines what card enumeration to use given the integer value of the card
      * @param num - the number value of the card
@@ -86,6 +88,16 @@ public class SinglePlayerModel {
                 break;
         }
         return ans;
+    }
+
+    public boolean goodData(Optional<String> input, double total){
+        double money = Double.parseDouble(input.get());
+        if(money>total){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     /**
