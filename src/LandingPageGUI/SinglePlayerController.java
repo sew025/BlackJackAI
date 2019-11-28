@@ -179,7 +179,8 @@ public class SinglePlayerController {
                         }
                     }
                 }
-                theModel.determineWinner(player,dealer);
+                theModel.determineWinner(player,dealer,getCurrentBet(),total);
+                theView.getMoneyAmount().setText(total.toString());
             }
         });
 
@@ -236,7 +237,8 @@ public class SinglePlayerController {
                     }
                 }
             }
-            theModel.determineWinner(player,dealer);
+            theModel.determineWinner(player,dealer,getCurrentBet(),total);
+            theView.getMoneyAmount().setText(total.toString());
         });
     }
 
@@ -250,8 +252,8 @@ public class SinglePlayerController {
         if (result.isPresent()){
             if(theModel.goodData(result,total.getAmount())){
                 //remove funds first
-                currentBet = Double.parseDouble(result.get());
-                total.removeFunds(currentBet);
+                setCurrentBet(Double.parseDouble(result.get()));
+                total.removeFunds(getCurrentBet());
                 theView.getMoneyAmount().setText(total.toString());
 
                 //set up the scene
@@ -303,12 +305,18 @@ public class SinglePlayerController {
                 //if player has blackjack they win
                 if(player.getScore()==21){
                     theModel.blackjackMsg();
+                    total.addFunds(getCurrentBet()+(getCurrentBet()*3/2));
+                    theView.getMoneyAmount().setText(total.toString());
                 }
             }
         }
     }
 
-    public Optional<String> getResult() {
-        return result;
+    public double getCurrentBet() {
+        return currentBet;
+    }
+
+    public void setCurrentBet(double currentBet) {
+        this.currentBet = currentBet;
     }
 }

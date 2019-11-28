@@ -20,6 +20,7 @@ package LandingPageGUI;
 
 import Blackjack.Cards;
 import Blackjack.Dealer;
+import Blackjack.Money;
 import Blackjack.Player;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
@@ -106,21 +107,24 @@ public class SinglePlayerModel {
      * @param dealer - the dealer object with a hand and a score
      * @author Jack Otto
      */
-    public void determineWinner(Player player, Dealer dealer){
+    public void determineWinner(Player player, Dealer dealer, double amount, Money total){
         if(player.getScore()>21){
             generateLossMsg();
         }
         else if(dealer.getScore()>21){
             dealerBust();
+            total.addFunds(amount*2);
         }
         else if(player.getScore()>dealer.getScore()){
             playerHigher();
+            total.addFunds(amount*2);
         }
         else if(player.getScore()<dealer.getScore()){
             dealerHigher();
         }
         else{
             pushMsg();
+            total.addFunds(amount);
         }
     }
 
