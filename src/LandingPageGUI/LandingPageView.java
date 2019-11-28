@@ -18,17 +18,17 @@
  */
 package LandingPageGUI;
 
-import javafx.geometry.Orientation;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
-
 
 /**
 * Creates the landing page. It will have a ~~cool~~ background image and it will have
@@ -78,9 +78,16 @@ public class LandingPageView {
         titleLabel = new Label("Welcome to BlackJack!" + "\n" + "How do you wake up Lady Gaga?");
         titleLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
         titleLabel.setTextFill(Color.WHITE);
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setOffsetX(3);
+        dropShadow.setOffsetY(3);
+        dropShadow.setHeight(5);
+        dropShadow.setRadius(2);
+        dropShadow.setColor(Color.DARKBLUE);
+        titleLabel.setEffect(dropShadow);
+
         titleLabel.setTextAlignment(TextAlignment.CENTER);
-
-
 
         playSinglePlayerGame = new Button("Play BlackJack against a computer");
         playWithAI = new Button("Simulate the game using Artificial Intelligence");
