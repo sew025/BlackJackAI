@@ -14,7 +14,8 @@ public class randomTrackSuccess {
         private ArrayList<Integer> playerHand;
         private int playerScore;
         private randomPlayer player;
-        private ArrayList<String> successes;
+        private ArrayList<Integer> successes;
+        private int success;
         private int count;
 
 
@@ -33,7 +34,7 @@ public class randomTrackSuccess {
         System.out.println("How many hands would you like to play?");
         Scanner in = new Scanner(System.in);
         int numHands = in.nextInt();
-        this.successes = new ArrayList<String>(numHands);
+        this.successes = new ArrayList<Integer>(numHands);
     }
 
     public boolean dealerWin() {
@@ -47,14 +48,19 @@ public class randomTrackSuccess {
         public void trackSuccess() {
             while(count < this.successes.size()){
                 if (!dealerWin()) {
-                    this.successes.add("win");
+                    success+=1;
                     count+=1;
+                    this.successes.add(success/count);
                 }
                 else{
-                    this.successes.add("loss");
                     count+=1;
+                    this.successes.add(success/count);
                 }
             }
-            return;
+            outcome();
+        }
+
+        public ArrayList<Integer> outcome(){
+            return this.successes;
         }
 }
