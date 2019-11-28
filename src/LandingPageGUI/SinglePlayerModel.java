@@ -92,6 +92,10 @@ public class SinglePlayerModel {
     }
 
     public boolean goodData(Optional<String> input, double total){
+        if(total<=0){
+            ultimateLoss();
+            return false;
+        }
         double money = Double.parseDouble(input.get());
         if(money>total){
             return false;
@@ -126,6 +130,18 @@ public class SinglePlayerModel {
             pushMsg();
             total.addFunds(amount);
         }
+    }
+
+    /**
+     * Function meaning the player busted
+     * @author Jack Otto
+     */
+    public void ultimateLoss() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("You ran out of funds");
+        alert.setHeaderText("Better luck next time");
+        alert.setContentText("Exit the game to get more funds");
+        alert.show();
     }
 
     /**
