@@ -146,11 +146,11 @@ public class AIGrahpicsView {
     }
 
     public LineChart generateSuccessChart(double[] successRateArray, String title) {
-        NumberAxis xAxis = new NumberAxis(0, successRateArray.length,1 );
+        NumberAxis xAxis = new NumberAxis(0, successRateArray.length, 200);
         xAxis.setLabel("Turn Number");
         xAxis.tickLabelFillProperty().set(Color.WHITE);
         xAxis.setTickUnit(50);
-        NumberAxis yAxis = new NumberAxis(0, 1, 0.01);
+        NumberAxis yAxis = new NumberAxis(0, 100, 10);
         yAxis.setLabel("                    AI Success Rate" + "\n" +
                 "(Number of Wins/Total Hands Played)");
         yAxis.tickLabelFillProperty().set(Color.WHITE);

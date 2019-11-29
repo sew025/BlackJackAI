@@ -26,21 +26,15 @@
      public class NNBlackjack {
 
           private static int numTurns;
-
           public NNBlackjack(int numTurns) {
                this.numTurns = numTurns;
           }
 
           private static NNPlayGame newGame;
-          private static AIGrahpicsView theView;
-          private static int generations = 1000;
-
           private static ArrayList<network> networks= new ArrayList<>();
 
           private static int total = 0;
           private static double winRate = 0;
-
-          public static double[] NNSuccess = new double[1000];
 
 
           /**
@@ -48,11 +42,12 @@
            * networks based on their success then removes the 50 worst ones. It then creates 50 new networks and resets the score
            * It does this as many times as the user wants to simulate. It plays the game again with the new networks, sorts them
            * and then finds the trained win %
-           * @param args
+           * @param numTurns  number of hands to simulate
            */
+          public double[] runGame(int numTurns) {
 
-
-          public static void main(String[] args) {
+               int generations = numTurns;
+               double[] NNSuccess = new double[numTurns];
 
                //create 100 randomly weighted neural networks
                for (int i = 0; i < 100; i++) {
@@ -71,7 +66,6 @@
                     }
 
                     winRate = (double) total / (i + 1);
-                    System.out.println(winRate);
                     NNSuccess[i] = winRate;
 
 
@@ -87,8 +81,7 @@
                          networks.get(j).resetScore();
                          networks.add(networks.get(j).reproduce());
                     }
-                    if (i % 100 == 0)
-                         System.out.println("Generation " + i + " complete");
+                    if (i % 100 == 0);
                }
 
                //simulate each new network
@@ -101,10 +94,9 @@
                }
 
                //sort more new networks
-             Collections.sort(networks, comparingInt(network::getScore));
+               Collections.sort(networks, comparingInt(network::getScore));
 
-
-          //calculate win%
+               //calculate win%
                double avg = 0;
                int temp;
                for(int i=0;i<100;i++){
@@ -112,17 +104,12 @@
                     avg+=temp;
                }
                avg/=(double) generations;
-               System.out.println("Trained win % : " + avg);
-
+               return NNSuccess;
 
           }
 
-         public static ArrayList<network> getNetworks() {
+          public static ArrayList<network> getNetworks() {
              return networks;
          }
 
-          public static double[] getTotal() {
-
-               return NNSuccess;
-          }
      }

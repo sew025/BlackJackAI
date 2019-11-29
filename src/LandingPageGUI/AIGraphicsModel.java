@@ -36,7 +36,7 @@ public class AIGraphicsModel {
 
     public double[] trackSmartSuccess(int numTurns) {
         neuralNetPlayer = new NNBlackjack(numTurns);
-        double[] successArray = neuralNetPlayer.getTotal();
+        double[] successArray = neuralNetPlayer.runGame(numTurns);
         return successArray;
     }
 }
