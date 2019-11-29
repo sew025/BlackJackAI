@@ -150,7 +150,7 @@ public class AIGrahpicsView {
         xAxis.setLabel("Turn Number");
         xAxis.tickLabelFillProperty().set(Color.WHITE);
         xAxis.setTickUnit(50);
-        NumberAxis yAxis = new NumberAxis(0, 1, 0.01);
+        NumberAxis yAxis = new NumberAxis(0, 100, 10);
         yAxis.setLabel("                    AI Success Rate" + "\n" +
                 "(Number of Wins/Total Hands Played)");
         yAxis.tickLabelFillProperty().set(Color.WHITE);
