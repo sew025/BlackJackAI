@@ -20,8 +20,13 @@
       */
      public class neuron {
 
+
           private final double[] weight;
           private final int inCount;
+
+          /**
+           * creates the individual neurons and initially gives them random weights.
+           */
 
           public neuron(int inCount, double[] seed){
                this.inCount = inCount;
@@ -42,18 +47,21 @@
                return this.weight;
           }
 
+          /**
+           * fires the neuron and finds the outputs corresponding to the weight of the neurons and inputs.
+           * (If im not mistaken this acts as the activation function)
+           * @param in
+           * @return out, the
+           */
+
           public double fire(double[] in){
                double out = 0;
                for(int i=0;i<this.inCount;i++){
                     out += this.weight[i] * in[i];
                }
 
-               out = 1/(1+Math.exp(0-out));
+               out = 1/(1+Math.exp(0-out)); //1/(1+e^(0-out)) eg probably very close to 1
 
                return out;
-          }
-
-          public void adjust(Boolean win){
-
           }
      }
