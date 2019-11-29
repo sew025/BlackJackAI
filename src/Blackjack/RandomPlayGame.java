@@ -38,42 +38,33 @@ public class RandomPlayGame {
             randomPlayer randomPlayer = new randomPlayer(pHand,startPScore);
             Dealer dealer = new Dealer(dHand,startDScore);
 
-            //System.out.println(randomPlayer);
 
             //run a turn
             while(randomPlayer.makeMove()){
                 randomPlayer.getPlayerHand().add(deck.getDeck().get(0));
                 deck.getDeck().remove(0);
-                //System.out.println(randomPlayer);
             }
             if (randomPlayer.getScore()>21){
                 won = false;
-                //System.out.println("You busted, you lose");
             }
             else{
-                //System.out.println(dealer);
                 while(dealer.makeMove()){
                     dealer.getDealerHand().add(deck.getDeck().get(0));
                     deck.getDeck().remove(0);
-                    //System.out.println(dealer);
                 }
 
                 if(dealer.getScore()>21){
-                    //System.out.println("Dealer busted, you win");
                     won = true;
                 }
                 else{
                     if(randomPlayer.getScore()>dealer.getScore()){
-                        //System.out.println("You win, you scored higher");
                         won = true;
                     }
                     else if(dealer.getScore()>randomPlayer.getScore()){
-                        //System.out.println("You lose, the dealer scored higher");
                         won = false;
                     }
                     else{
                         won = false;
-                        //System.out.println("It's a tie, you each scored the same");
                     }
                 }
             }

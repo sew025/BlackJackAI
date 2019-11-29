@@ -19,6 +19,7 @@
 package LandingPageGUI;
 
 
+import Blackjack.randomTrackSuccess;
 import NeuralNetPlay.NNBlackjack;
 import NeuralNetPlay.NNTrackSuccess;
 
@@ -30,7 +31,7 @@ public class AIGraphicsModel {
     }
 
     public double[] trackRandomSuccess(int numTurns) {
-        double[] successRate = new double[0];
+        double[] successRate = randomTrackSuccess.trackSuccess(numTurns);
         return successRate;
     }
 

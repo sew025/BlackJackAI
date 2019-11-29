@@ -14,7 +14,6 @@ public class randomTrackSuccess {
         successes = new double[numHands];
         count = 0;
         success = 0;
-        System.out.println(numHands);
         for(int i = 0; i < numHands;i++){
             RandomPlayGame rando = new RandomPlayGame();
             rando.blackjack();
