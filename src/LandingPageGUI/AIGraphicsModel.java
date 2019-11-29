@@ -19,11 +19,12 @@
 package LandingPageGUI;
 
 
+import NeuralNetPlay.NNBlackjack;
 import NeuralNetPlay.NNTrackSuccess;
 
 public class AIGraphicsModel {
 
-    private NNTrackSuccess neuralNetPlayer;
+    private NNBlackjack neuralNetPlayer;
 
     public AIGraphicsModel() {
     }
@@ -34,8 +35,8 @@ public class AIGraphicsModel {
     }
 
     public double[] trackSmartSuccess(int numTurns) {
-        neuralNetPlayer = new NNTrackSuccess();
-        double[] successArray = neuralNetPlayer.getTotal(numTurns);
+        neuralNetPlayer = new NNBlackjack(numTurns);
+        double[] successArray = neuralNetPlayer.getTotal();
         return successArray;
     }
 }
