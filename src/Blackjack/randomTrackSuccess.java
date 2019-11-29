@@ -3,6 +3,7 @@ package Blackjack;
 import Blackjack.Dealer;
 import Blackjack.Player;
 import Blackjack.randomPlayer;
+import LandingPageGUI.AIGrahpicsView;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class randomTrackSuccess {
         private ArrayList<Integer> successes;
         private int success;
         private int count;
+        private AIGrahpicsView theView;
 
 
         public randomTrackSuccess(Dealer dealer, ArrayList<Integer> dealerHand, int dealerScore, ArrayList<Integer> playerHand,
@@ -31,9 +33,7 @@ public class randomTrackSuccess {
         }
 
     private void getNumHands() {
-        System.out.println("How many hands would you like to play?");
-        Scanner in = new Scanner(System.in);
-        int numHands = in.nextInt();
+        int numHands = Integer.parseInt(theView.getnTurns().getText());
         this.successes = new ArrayList<Integer>(numHands);
     }
 
