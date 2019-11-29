@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.applet.Applet;
@@ -37,6 +38,18 @@ public class LandingPageMain extends Application {
      * The Controller for the AI Graphics potion
      */
     private AIGraphicsController AIController;
+    /**
+     * the model for the single player portion
+     */
+    private SinglePlayerModel singleModel;
+    /**
+     * the view for the single player portion
+     */
+    private SinglePlayerView singleView;
+    /**
+     * the controller for the single player portion
+     */
+    private SinglePlayerController singleController;
 
 
     /**
@@ -62,6 +75,8 @@ public class LandingPageMain extends Application {
         theView = new LandingPageView(theModel);
         AIModel = new AIGraphicsModel();
         AIView = new AIGrahpicsView(AIModel);
+        singleModel = new SinglePlayerModel();
+        singleView = new SinglePlayerView(singleModel);
     }
 
 
@@ -78,19 +93,27 @@ public class LandingPageMain extends Application {
     public void start(Stage primaryStage) {
         theController = new LandingPageController(theModel, theView);
         AIController = new AIGraphicsController(AIModel, AIView);
+        singleController = new SinglePlayerController(singleModel,singleView);
 
-        File musicFile = new File("src/LandingPageGUI/PokerFace.mp3");
-        final Media media = new Media(musicFile.toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+//        File musicFile = new File("src/LandingPageGUI/PokerFace.mp3");
+//        final Media media = new Media(musicFile.toURI().toString());
+//        MediaPlayer mediaPlayer = new MediaPlayer(media);
+//        mediaPlayer.play();
 
         Scene openingScene = new Scene(theView.getMainRoot());
         Scene AIResultsScene = new Scene(AIView.getAIRoot());
+        Scene gameScene = new Scene(singleView.getGameRoot());
 
         theView.getPlayWithAI().setOnAction(actionEvent -> {
             primaryStage.setScene(AIResultsScene);
         });
         AIView.getBackButton().setOnAction(actionEvent -> {
+            primaryStage.setScene(openingScene);
+        });
+        theView.getPlaySinglePlayerGame().setOnAction(actionEvent -> {
+            primaryStage.setScene(gameScene);
+        });
+        singleView.getBackButton().setOnAction(actionEvent -> {
             primaryStage.setScene(openingScene);
         });
 

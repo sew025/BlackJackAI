@@ -95,6 +95,19 @@ public class Dealer {
     }
 
     /**
+     * determine whether to hit or stand, this doesnt use the ace switch so it can be manually called
+     * @return boolean value of true or false
+     */
+    public boolean onlyHitOrStand(){
+        if (getScore()<STOP_NUM){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
      * method used to switch the value of the ace from a value of 11 to 1 if the dealer has busted because of the ace
      */
     public void aceSwitch(){
