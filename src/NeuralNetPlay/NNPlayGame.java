@@ -38,6 +38,7 @@
 
           private NeuralNet.network network = new network(null, null);
 
+
           /**
            * sets up dealer and player. the network decides to hit or stand once the player and dealer both stand, it checks
            * who won or lost. This data is then added to the network for its future decisions.

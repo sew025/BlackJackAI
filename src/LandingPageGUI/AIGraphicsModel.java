@@ -18,18 +18,26 @@
  */
 package LandingPageGUI;
 
+
+import NeuralNetPlay.NNTrackSuccess;
+
 public class AIGraphicsModel {
+
+    private NNTrackSuccess neuralNetPlayer;
 
     public AIGraphicsModel() {
     }
 
-//    public int[] trackRandomSuccess(int numTurns) {
-//        int[] successRate = RandomAI.doRandomAI(numTurns);
-//        return successRate;
-//    }
-//
-//    public int[] trackSmartSuccess(int numTurns) {
-//        int[] successRate = SmartAI.doSmartAI(numTurns);
-//        return successRate;
-//    }
+    public double[] trackRandomSuccess(int numTurns) {
+        double[] successRate = new double[0];
+        return successRate;
+    }
+
+    public double[] trackSmartSuccess(int numTurns) {
+        double[] neuralArray = new double[numTurns];
+        neuralNetPlayer = new NNTrackSuccess();
+        double[] plsWork = neuralNetPlayer.getTotal();
+        System.out.println(neuralArray + " " + plsWork);
+        return neuralArray;
+    }
 }

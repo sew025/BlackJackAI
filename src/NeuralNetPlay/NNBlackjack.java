@@ -25,10 +25,12 @@
 
      public class NNBlackjack {
 
+          public NNBlackjack() {
+          }
+
           private static NNPlayGame newGame;
           private static AIGrahpicsView theView;
           private static int generations = 1000;
-                  //Integer.parseInt(theView.getnTurns().getText());
 
           private static ArrayList<network> networks= new ArrayList<>();
 

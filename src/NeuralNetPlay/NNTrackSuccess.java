@@ -18,16 +18,18 @@
 
      public class NNTrackSuccess {
 
+          public NNTrackSuccess() {
+          }
+
           private AIGrahpicsView theView;
           private int size = 1000;
-                  //Integer.parseInt(theView.getnTurns().getText());
 
           private NNPlayGame game;
           private NNBlackjack blackjack;
 
-          private int[] NNSuccess = new int[size];
+          private double[] NNSuccess = new double[size];
           private int total = 0;
-          private int winRate = 0;
+          private double winRate = 0;
 
           /**
            * starts a new game of blackjack. iterates through the networks playing and initialises a game with the
@@ -36,25 +38,21 @@
            * @return
            */
 
-          public int[] getTotal() {
+          public double[] getTotal() {
                blackjack = new NNBlackjack();
-               for (int i = 0; i < blackjack.getNetworks().size(); i++) {
-                    game = new NNPlayGame(blackjack.getNetworks().get(i));
-                    for (int j = 0; i < size; i++) {
+               for (int j = 0; j < size; j++) {
+                    for (int i = 0; i < NNBlackjack.getNetworks().size(); i++) {
+                         game = new NNPlayGame(NNBlackjack.getNetworks().get(i));
                          if (game.trackWin()) {
                               total += 1;
                          }
-                         winRate = total / (j+1);
-                         NNSuccess[j] = winRate;
                     }
-
+                    winRate = (double) total / (j + 1);
+                    System.out.println(winRate);
+                    NNSuccess[j] = winRate;
                }
-               System.out.println(NNSuccess);
-
                return NNSuccess;
           }
-
-
      }
 
 
