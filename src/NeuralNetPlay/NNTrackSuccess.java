@@ -22,12 +22,14 @@
           private int size = Integer.parseInt(theView.getnTurns().getText());
 
           private NNPlayGame game;
+          private NNBlackjack blackjack;
 
           private int[] NNSuccess = new int[size];
           private int total = 0;
           private int winRate = 0;
 
           public int[] getTotal() {
+               blackjack = new NNBlackjack();
                for (int i = 0; i < size; i++) {
                     if (game.trackWin()) {
                          total += 1;
