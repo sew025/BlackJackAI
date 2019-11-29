@@ -96,5 +96,7 @@
 
           }
 
-
+         public static ArrayList<network> getNetworks() {
+             return networks;
+         }
      }

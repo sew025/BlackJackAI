@@ -19,7 +19,8 @@
      public class NNTrackSuccess {
 
           private AIGrahpicsView theView;
-          private int size = Integer.parseInt(theView.getnTurns().getText());
+          private int size = 1000;
+                  //Integer.parseInt(theView.getnTurns().getText());
 
           private NNPlayGame game;
           private NNBlackjack blackjack;
@@ -28,15 +29,28 @@
           private int total = 0;
           private int winRate = 0;
 
+          /**
+           * starts a new game of blackjack. iterates through the networks playing and initialises a game with the
+           * specified network at the list. finds if the game was on and adds one to the total if it was. It then
+           * finds the win rate and adds this rate to the list of successes.
+           * @return
+           */
+
           public int[] getTotal() {
                blackjack = new NNBlackjack();
-               for (int i = 0; i < size; i++) {
-                    if (game.trackWin()) {
-                         total += 1;
+               for (int i = 0; i < blackjack.getNetworks().size(); i++) {
+                    game = new NNPlayGame(blackjack.getNetworks().get(i));
+                    for (int j = 0; i < size; i++) {
+                         if (game.trackWin()) {
+                              total += 1;
+                         }
+                         winRate = total / (j+1);
+                         NNSuccess[j] = winRate;
                     }
-                    winRate = total / (i+1);
-                    NNSuccess[i] = winRate;
+
                }
+               System.out.println(NNSuccess);
+
                return NNSuccess;
           }
 
