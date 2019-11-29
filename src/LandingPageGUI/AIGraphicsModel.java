@@ -34,10 +34,8 @@ public class AIGraphicsModel {
     }
 
     public double[] trackSmartSuccess(int numTurns) {
-        double[] neuralArray = new double[numTurns];
         neuralNetPlayer = new NNTrackSuccess();
-        double[] plsWork = neuralNetPlayer.getTotal();
-        System.out.println(neuralArray + " " + plsWork);
-        return neuralArray;
+        double[] successArray = neuralNetPlayer.getTotal(numTurns);
+        return successArray;
     }
 }

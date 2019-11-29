@@ -21,13 +21,9 @@
           public NNTrackSuccess() {
           }
 
-          private AIGrahpicsView theView;
-          private int size = 1000;
-
           private NNPlayGame game;
           private NNBlackjack blackjack;
 
-          private double[] NNSuccess = new double[size];
           private int total = 0;
           private double winRate = 0;
 
@@ -38,7 +34,8 @@
            * @return
            */
 
-          public double[] getTotal() {
+          public double[] getTotal(int size) {
+               double[] NNSuccess = new double[size];
                blackjack = new NNBlackjack();
                for (int j = 0; j < size; j++) {
                     for (int i = 0; i < NNBlackjack.getNetworks().size(); i++) {
