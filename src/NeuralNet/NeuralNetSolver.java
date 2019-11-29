@@ -19,8 +19,9 @@
 
      public class NeuralNetSolver {
 
-          public static void runFile() throws IOException {
+          public static Process runFile() throws IOException {
                Process process = Runtime.getRuntime().exec("python neural_net.py");
+               return process;
 
           }
 

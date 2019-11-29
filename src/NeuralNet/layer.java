@@ -25,6 +25,15 @@
           private int size;
           private int inCount;
 
+          /**
+           * creates layers of neurons. if the list of neurons (param children) is empty, then it adds new neurons to the
+           * list/layer. if the list of neurons (param children) is not empty, then it sets the list of neurons to that
+           * list.
+           * @param size
+           * @param inCount
+           * @param children
+           */
+
           public layer(int size, int inCount, ArrayList<neuron> children){
                this.neurons = new ArrayList<>();
                this.size = size;
@@ -38,6 +47,12 @@
                }
           }
 
+          /**
+           * fires an entire row of neurons to get the output for that layer.
+           * @param in
+           * @return
+           */
+
           public double[] fireNeurons(double[] in){
                double[] out = new double[this.size];
 
@@ -47,6 +62,11 @@
 
                return out;
           }
+
+          /**
+           * creates a new layer of neurons. eg replicates the exisiting layers.
+           * @return
+           */
 
           public layer reproduce(){
                ArrayList neuronChildren;

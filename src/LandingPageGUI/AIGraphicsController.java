@@ -40,14 +40,14 @@ public class AIGraphicsController {
             AIView.getAIRoot().getChildren().remove(AIView.getSuccessChart());
             if (AIView.getOptionsBox().getValue().equals("Random Guess AI")) {
                 try {
-                    int[] randomArray = AIModel.trackRandomSuccess(Integer.parseInt(AIView.getnTurns().getText()));
+                    double[] randomArray = AIModel.trackRandomSuccess(Integer.parseInt(AIView.getnTurns().getText()));
                     AIView.getAIRoot().getChildren().add(AIView.generateSuccessChart(randomArray, "Success Rate for the Random Guess AI"));
                 } catch (NumberFormatException nFE) {
                     generateErrorMessage();
                 }
             } else if (AIView.getOptionsBox().getValue().equals("Smart Guess AI")) {
                 try {
-                    int[] smartArray = AIModel.trackSmartSuccess(Integer.parseInt(AIView.getnTurns().getText()));
+                    double[] smartArray = AIModel.trackSmartSuccess(Integer.parseInt(AIView.getnTurns().getText()));
                     AIView.getAIRoot().getChildren().add(AIView.generateSuccessChart(smartArray, "Success Rate for the Smart Guess AI"));
                 } catch (NumberFormatException nFE) {
                     generateErrorMessage();

@@ -14,10 +14,14 @@
       * **************************************** */
      package NeuralNet;
 
+
      /**
       *
       * @author ZekeR
       */
+     /*
      public class sigmoid {
 
      }
+
+      */
