@@ -32,6 +32,14 @@
 
           private static ArrayList<network> networks= new ArrayList<>();
 
+          /**
+           * runs the game. First creates 100 random networks. for each network, it simulates the game 100 times, then sorts the
+           * networks based on their success then removes the 50 worst ones. It then creates 50 new networks and resets the score
+           * It does this as many times as the user wants to simulate. It plays the game again with the new networks, sorts them
+           * and then finds the trained win %
+           * @param args
+           */
+
 
           public static void main(String[] args) {
 
