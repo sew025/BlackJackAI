@@ -21,7 +21,6 @@
           public NNTrackSuccess() {
           }
 
-          private NNPlayGame game;
           private NNBlackjack blackjack;
 
           private int total = 0;
@@ -33,23 +32,27 @@
            * finds the win rate and adds this rate to the list of successes.
            * @return
            */
-
+/*
           public double[] getTotal(int size) {
                double[] NNSuccess = new double[size];
                blackjack = new NNBlackjack();
                for (int j = 0; j < size; j++) {
-                    for (int i = 0; i < NNBlackjack.getNetworks().size(); i++) {
-                         game = new NNPlayGame(NNBlackjack.getNetworks().get(i));
-                         if (game.trackWin()) {
-                              total += 1;
-                         }
+                    for (int i = 0; i < blackjack.getNetworks().size(); i++) {
+                         total = blackjack.getNetworks().get(i).getScore();
+                         //if (game.trackWin()) {
+                        //      total += 1;
+                         //}
                     }
                     winRate = (double) total / (j + 1);
-                    System.out.println(winRate);
+                    System.out.println(total);
                     NNSuccess[j] = winRate;
                }
                return NNSuccess;
           }
+
+ */
      }
+
+
 
 

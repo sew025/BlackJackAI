@@ -25,7 +25,10 @@
 
      public class NNBlackjack {
 
-          public NNBlackjack() {
+          private static int numTurns;
+
+          public NNBlackjack(int numTurns) {
+               this.numTurns = numTurns;
           }
 
           private static NNPlayGame newGame;
@@ -33,6 +36,12 @@
           private static int generations = 1000;
 
           private static ArrayList<network> networks= new ArrayList<>();
+
+          private static int total = 0;
+          private static double winRate = 0;
+
+          public static double[] NNSuccess = new double[1000];
+
 
           /**
            * runs the game. First creates 100 random networks. for each network, it simulates the game 100 times, then sorts the
@@ -54,9 +63,16 @@
 
                     //simulate 100 games in each network
                     for (int j = 0; j < 100; j++) {
-                         for (int k = 0; k < 100; k++)
+                         for(int k=0;k<100;k++)
                               newGame = new NNPlayGame(networks.get(j));
+                              if (newGame.trackWin()) {
+                                   total += 1;
+                              }
                     }
+
+                    winRate = (double) total / (i + 1);
+                    System.out.println(winRate);
+                    NNSuccess[i] = winRate;
 
 
                     //sort by success
@@ -79,6 +95,9 @@
                for(int j=0;j<100;j++){
                     for(int k=0;k<100;k++)
                          newGame = new NNPlayGame(networks.get(j));
+                         if (newGame.trackWin()) {
+                              //getTotal();
+                         }
                }
 
                //sort more new networks
@@ -101,4 +120,9 @@
          public static ArrayList<network> getNetworks() {
              return networks;
          }
+
+          public static double[] getTotal() {
+
+               return NNSuccess;
+          }
      }

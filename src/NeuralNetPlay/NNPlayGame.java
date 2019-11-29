@@ -144,7 +144,7 @@
            */
 
           public boolean trackWin() {
-               if (winloss == 2) {
+               if (winloss == 2 || winloss == 1) {
                     return true;
                }
                else {
