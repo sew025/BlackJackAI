@@ -14,6 +14,7 @@
       * **************************************** */
      package NeuralNetPlay;
 
+     import LandingPageGUI.AIGrahpicsView;
      import NeuralNet.network;
 
      import java.util.ArrayList;
@@ -25,7 +26,9 @@
      public class NNBlackjack {
 
           private static NNPlayGame newGame;
+          private static AIGrahpicsView theView;
           private static int generations = 1000;
+                  //Integer.parseInt(theView.getnTurns().getText());
 
           private static ArrayList<network> networks= new ArrayList<>();
 
@@ -79,7 +82,7 @@
                     temp = networks.get(i).getScore();
                     avg+=temp;
                }
-               avg/=(double) 1000;
+               avg/=(double) generations;
                System.out.println("Trained win % : " + avg);
 
 

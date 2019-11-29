@@ -29,6 +29,7 @@
 
           private ArrayList<Integer> playerHand = new ArrayList<>();
           private Player player;
+          private int winloss;
 
           private NeuralNet.network network = new network(null, null);
 
@@ -67,7 +68,8 @@
                     deck.getDeck().remove(0);
                }
 
-               int winloss = checkWin(dealer.getScore(), player.getScore());
+               winloss = checkWin(dealer.getScore(), player.getScore());
+               trackWin();
                n.addWin(winloss);
 
           }
@@ -102,6 +104,15 @@
                     return 2;
                }
                return 0;
+          }
+
+          public boolean trackWin() {
+               if(winloss == 2) {
+                    return true;
+               } else {
+                    return false;
+               }
+
           }
 
      }
