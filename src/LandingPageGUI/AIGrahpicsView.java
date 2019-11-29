@@ -145,19 +145,20 @@ public class AIGrahpicsView {
         AIRoot.getChildren().addAll(titleLabel, optionsPane, nTurnsLabel, nTurns, goButton, backButton);
     }
 
-    public LineChart generateSuccessChart(int[] successRateArray, String title) {
-        NumberAxis xAxis = new NumberAxis();
+    public LineChart generateSuccessChart(double[] successRateArray, String title) {
+        NumberAxis xAxis = new NumberAxis(0, successRateArray.length,1 );
         xAxis.setLabel("Turn Number");
         xAxis.tickLabelFillProperty().set(Color.WHITE);
         xAxis.setTickUnit(50);
-        NumberAxis yAxis = new NumberAxis();
+        NumberAxis yAxis = new NumberAxis(0, 1, 0.01);
         yAxis.setLabel("                    AI Success Rate" + "\n" +
                 "(Number of Wins/Total Hands Played)");
         yAxis.tickLabelFillProperty().set(Color.WHITE);
 
+
         successChart = new LineChart<>(xAxis, yAxis);
         successChart.setTitle(title);
-        XYChart.Series<Integer, Integer> dataSeries = new XYChart.Series<>();
+        XYChart.Series<Integer, Double> dataSeries = new XYChart.Series<>();
 
         for (int index = 0; index < successRateArray.length; index++) {
             dataSeries.getData().add(new XYChart.Data<>(index, successRateArray[index]));

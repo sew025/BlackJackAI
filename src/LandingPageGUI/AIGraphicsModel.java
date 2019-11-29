@@ -18,21 +18,24 @@
  */
 package LandingPageGUI;
 
+
+import NeuralNetPlay.NNTrackSuccess;
+
 public class AIGraphicsModel {
+
+    private NNTrackSuccess neuralNetPlayer;
 
     public AIGraphicsModel() {
     }
 
-    public int[] trackRandomSuccess(int numTurns) {
-        int[] successRate = new int[0];
+    public double[] trackRandomSuccess(int numTurns) {
+        double[] successRate = new double[0];
         return successRate;
     }
 
-    public int[] trackSmartSuccess(int numTurns) {
-        int[] successRate = new int[0];
-//        for (int i = 0; i < successRate.length; i++) {
-//            successRate[i] = i;
-//        }
-        return successRate;
+    public double[] trackSmartSuccess(int numTurns) {
+        neuralNetPlayer = new NNTrackSuccess();
+        double[] successArray = neuralNetPlayer.getTotal(numTurns);
+        return successArray;
     }
 }
