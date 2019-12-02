@@ -37,6 +37,7 @@ public class GetCard {
      * to determine which card needs to be displayed.
      * @param   cardValue   The card that was drawn and needs to be displayed
      * @return  newCard     A rectangle with a picture of the card on it
+     * @author Matt McGauley
      */
     public static Rectangle getAppropriateCard(Blackjack.Cards cardValue) {
         Rectangle newCard = createRectangle();
@@ -101,6 +102,7 @@ public class GetCard {
      * Create the rectangle object that we are going to put the face of the card
      * on
      * @return  newCard The blank card
+     * @author Matt McGauley
      */
     public static Rectangle createRectangle() {
         Rectangle newCard = new Rectangle(72, 96);
@@ -115,6 +117,7 @@ public class GetCard {
      * stock images.
      * @param cardType      The card's value (i.e. one, ace, king...)
      * @return cardPicture  The picture of the card to be put on a rectangle
+     * @author Matt McGauley
      */
     public static Image getFace(String cardType) {
         File cardDirectory = new File("src/DeckOfCards/" + cardType);
@@ -129,6 +132,7 @@ public class GetCard {
      * Creates a rectangle with a face-down card on it. This will be used for the
      * images of the deck of cards and the dealer's hand.
      * @return  newCard The face-down card on a rectangle
+     * @authro Matt McGauley
      */
     public static Rectangle createFaceDownCard() {
         Rectangle newCard = createRectangle();
