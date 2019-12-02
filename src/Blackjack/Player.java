@@ -110,4 +110,14 @@ public class Player {
             }
         }
     }
+
+    public int getNumAces() {
+        int total = 0;
+        for (int i = 0; i < playerHand.size(); i++) {
+            if (playerHand.get(i) == 11) {
+                total += 1;
+            }
+        }
+        return total;
+    }
 }

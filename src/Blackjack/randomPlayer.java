@@ -1,8 +1,6 @@
-package rando;
+package Blackjack;
 
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 public class randomPlayer {
     /**
@@ -21,6 +19,7 @@ public class randomPlayer {
      * @param score - the starting score of the player based on the cards passed in
      */
     public randomPlayer(ArrayList<Integer> playerHand, int score) {
+        //System.out.println("I'm Random!");
         this.playerHand = playerHand;
         this.score = score;
     }
@@ -83,7 +82,7 @@ public class randomPlayer {
                 getPlayerHand().remove(i);
                 getPlayerHand().add(1);
                 setPlayerHand(getPlayerHand());
-                System.out.println(toString());
+                //System.out.println(toString());
                 break;
             }
         }

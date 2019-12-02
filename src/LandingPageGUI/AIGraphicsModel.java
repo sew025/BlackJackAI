@@ -18,21 +18,26 @@
  */
 package LandingPageGUI;
 
+
+import Blackjack.randomTrackSuccess;
+import NeuralNetPlay.NNBlackjack;
+import NeuralNetPlay.NNTrackSuccess;
+
 public class AIGraphicsModel {
+
+    private NNBlackjack neuralNetPlayer;
 
     public AIGraphicsModel() {
     }
 
-    public int[] trackRandomSuccess(int numTurns) {
-        int[] successRate = new int[0];
+    public double[] trackRandomSuccess(int numTurns) {
+        double[] successRate = randomTrackSuccess.trackSuccess(numTurns);
         return successRate;
     }
 
-    public int[] trackSmartSuccess(int numTurns) {
-        int[] successRate = new int[0];
-//        for (int i = 0; i < successRate.length; i++) {
-//            successRate[i] = i;
-//        }
-        return successRate;
+    public double[] trackSmartSuccess(int numTurns) {
+        neuralNetPlayer = new NNBlackjack(numTurns);
+        double[] successArray = neuralNetPlayer.runGame(numTurns);
+        return successArray;
     }
 }
