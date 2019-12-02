@@ -20,6 +20,9 @@ package Blackjack;
 
 import java.util.ArrayList;
 
+/**
+ * Creates a deck of cards in numerical order, that can later be shuffled for use in blackjack
+ */
 public class Deck {
     /**
      * The list holding all of the cards within the deck

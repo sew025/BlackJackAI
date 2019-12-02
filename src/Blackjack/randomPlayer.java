@@ -2,6 +2,9 @@ package Blackjack;
 
 import java.util.ArrayList;
 
+/**
+ * makes a random type of user than makes all of its decisions on whether to hit or stand based on a random number generator
+ */
 public class randomPlayer {
     /**
      * contains the cards within the dealers hand
