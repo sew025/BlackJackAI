@@ -48,6 +48,7 @@
 
                int generations = numTurns;
                double[] NNSuccess = new double[numTurns];
+               int total = 0;
 
                //create 100 randomly weighted neural networks
                for (int i = 0; i < 100; i++) {
@@ -66,6 +67,7 @@
                     }
 
                     winRate = (double) total / (i + 1);
+                    System.out.println(winRate);
                     NNSuccess[i] = winRate;
 
 

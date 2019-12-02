@@ -33,6 +33,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
@@ -148,6 +149,7 @@ public class AIGrahpicsView {
     public LineChart generateSuccessChart(double[] successRateArray, String title) {
         NumberAxis xAxis = new NumberAxis(0, successRateArray.length, 200);
         xAxis.setLabel("Turn Number");
+        xAxis.setBackground(Background.EMPTY);
         xAxis.tickLabelFillProperty().set(Color.WHITE);
         xAxis.setTickUnit(50);
         NumberAxis yAxis = new NumberAxis(0, 100, 10);
@@ -155,9 +157,11 @@ public class AIGrahpicsView {
                 "(Number of Wins/Total Hands Played)");
         yAxis.tickLabelFillProperty().set(Color.WHITE);
 
-
         successChart = new LineChart<>(xAxis, yAxis);
         successChart.setTitle(title);
+        successChart.getXAxis().setStyle("-fx-text-fill:#f6f5f7;");
+        successChart.getYAxis().setStyle("-fx-text-fill:#f1e9f2;");
+        successChart.setCreateSymbols(false);
         XYChart.Series<Integer, Double> dataSeries = new XYChart.Series<>();
 
         for (int index = 0; index < successRateArray.length; index++) {
