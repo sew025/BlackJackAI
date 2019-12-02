@@ -2,15 +2,27 @@ package Blackjack;
 
 import java.util.ArrayList;
 
+/**
+ * class that plays our blackjack function for the user buts makes ever decision randomly between hit or stand
+ */
 public class RandomPlayGame {
+
+    /**
+     * boolean value that is used for when the random wins or loses
+     */
     private static boolean won;
+
     /**
      * the running program to create a single consul version game of randomized blackjack
      */
     public static void main(String[] args) {
             blackjack();
         }
-        public static void blackjack(){
+
+    /**
+     * function to play the blackjack game with random decisions
+     */
+    public static void blackjack(){
             //make and shuffle the deck
             won = false;
             Deck deck = new Deck();
@@ -70,6 +82,10 @@ public class RandomPlayGame {
             }
         }
 
+    /**
+     * returns the value of won boolean
+     * @return - true or false
+     */
     public static boolean isWon() {
         return won;
     }

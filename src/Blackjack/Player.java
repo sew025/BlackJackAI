@@ -21,6 +21,9 @@ package Blackjack;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * the player class, allows the user to determine what to do in the game
+ */
 public class Player {
     /**
      * contains the cards within the dealers hand
@@ -111,6 +114,11 @@ public class Player {
         }
     }
 
+    /**
+     * gets the number of aces within the players hand
+     * @return number of aces
+     * @author Bea Casey
+     */
     public int getNumAces() {
         int total = 0;
         for (int i = 0; i < playerHand.size(); i++) {

@@ -76,6 +76,9 @@ public class randomPlayer {
         }
     }
 
+    /**
+     * switch the ace from a score of 11 to 1
+     */
     public void aceSwitch(){
         for (int i = 0; i < getPlayerHand().size(); i++) {
             if(getPlayerHand().get(i)==11){
