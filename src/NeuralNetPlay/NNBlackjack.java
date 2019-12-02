@@ -23,17 +23,38 @@
 
      import static java.util.Comparator.comparingInt;
 
+     /**
+      * class building a neural net for blackjack
+      */
      public class NNBlackjack {
 
+          /**
+           * the number of turns
+           */
           private static int numTurns;
+
           public NNBlackjack(int numTurns) {
                this.numTurns = numTurns;
           }
 
+          /**
+           * game setup with a neural net
+           */
           private static NNPlayGame newGame;
+
+          /**
+           * list of networks the neural net will be using to play the game
+           */
           private static ArrayList<network> networks= new ArrayList<>();
 
+          /**
+           * total games played
+           */
           private static int total = 0;
+
+          /**
+           * win percentage of the neural net
+           */
           private static double winRate = 0;
 
 

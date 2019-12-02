@@ -27,15 +27,37 @@
       */
 
      public class NNPlayGame {
+          /**
+           * deck being played with
+           */
           private Deck deck = new Deck();
+          /**
+           * dealer hand
+           */
           private ArrayList<Integer> dealerHand = new ArrayList<>();
+          /**
+           * dealer
+           */
           private Dealer dealer;
-
+          /**
+           * player hand
+           */
           private ArrayList<Integer> playerHand = new ArrayList<>();
+          /**
+           * player
+           */
           private Player player;
+          /**
+           * the int used to determine if it is a win, loss or push
+           */
           private int winloss;
+          /**
+           * the number of total wins
+           */
           private int winTotal = 0;
-
+          /**
+           * the neural network
+           */
           private NeuralNet.network network = new network(null, null);
 
 
