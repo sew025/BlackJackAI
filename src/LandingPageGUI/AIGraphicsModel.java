@@ -21,7 +21,6 @@ package LandingPageGUI;
 
 import Blackjack.randomTrackSuccess;
 import NeuralNetPlay.NNBlackjack;
-import NeuralNetPlay.NNTrackSuccess;
 
 public class AIGraphicsModel {
 
