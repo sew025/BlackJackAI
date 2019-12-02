@@ -21,6 +21,30 @@ The following resources were used to develop this project:
 
 ENTER RESOURCES HERE
 
+##Project Explanation
+For our final project, we have made the casino game, Blackjack. Within our project we have created
+a single player consul version of the game. This allows a player to play the game quickly without having to open a GUI.
+The consul version is a simplified version of the game that does not allow for any betting, and only focuses on the 
+game. We have also created a GUI for Blackjack, the GUI allows the user to play a full version of the game
+of Blackjack. The GUI includes the use of a real deck of cards with images that the player can see, along with
+the ability to play with fake money to show the user how they are doing while playing the game. The game begins
+every time with $100 and from there the amount depends on how the user plays. Lastly within our project,
+we have taught an AI how to play the game of Blackjack and then tracked its success rate as it plays a 
+specified number of games. In order to show how the AI compares to another type of player, we have also encoded a random
+player, that makes all of its decisions via a random number generator to determine whether to hit or stand.
+And on another graph we track the success rate of the random solver in order to compare its results to the AI.
+In the end when we compare the two graphs, it can easily be seen that the AI outperforms the random player by a wide 
+margin, usually somewhere between 20-25% better.
+
+##Third Party Libraries
+JavaFX - version: javafx-sdk-13.0.1
+
+JUnit Testing - version: org.junit.jupiter:junit-jupiter:5.5.2
+
+##Project Build and Run Instructions for the Jar File
+
+ENTER THE INSTRUCTIONS HERE ONCE WE HAVE THE JAR FILE 
+
 ##Class Descriptions
 ###Blackjack Package
 This package contains the code needed to create a consul version of the game blackjack.
