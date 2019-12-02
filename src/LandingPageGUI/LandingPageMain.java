@@ -13,6 +13,9 @@ import java.applet.Applet;
 import java.io.File;
 import java.util.Map;
 
+/**
+ * the class to run the actual game, including all three scene roots
+ */
 public class LandingPageMain extends Application {
     /**
      * The Model for the landing page

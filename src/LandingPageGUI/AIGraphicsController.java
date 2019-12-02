@@ -22,13 +22,21 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.scene.control.Alert;
 
-
+/**
+ * the controller for the ai page, makes the functionality for the page
+ */
 public class AIGraphicsController {
     /** The Model */
     private AIGrahpicsView AIView;
     /** The View */
     private AIGraphicsModel AIModel;
 
+    /**
+     * The constructor with all of the action events making sure that for everything the user can click on, there is a
+     * response by the computer
+     * @param AIModel - the model for the ai page
+     * @param AIView - the view for the ai page
+     */
     public AIGraphicsController(AIGraphicsModel AIModel, AIGrahpicsView AIView) {
         this.AIModel = AIModel;
         this.AIView = AIView;
@@ -56,6 +64,9 @@ public class AIGraphicsController {
         });
     }
 
+    /**
+     * an error message that is generated if the user doesnt input a good number for the turns to simulate
+     */
     private void generateErrorMessage() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Incorrect input!");

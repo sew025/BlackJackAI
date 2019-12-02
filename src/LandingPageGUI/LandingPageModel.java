@@ -18,5 +18,8 @@
  */
 package LandingPageGUI;
 
+/**
+ * the model for the opening scene
+ */
 public class LandingPageModel {
 }

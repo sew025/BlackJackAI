@@ -40,6 +40,9 @@ import javafx.scene.text.TextAlignment;
 
 import java.io.File;
 
+/**
+ * the view of the ai page
+ */
 public class AIGrahpicsView {
     /**
      * The model
@@ -86,8 +89,10 @@ public class AIGrahpicsView {
      */
     private Button backButton;
 
-
-
+    /**
+     * Making the second scene that gives the user the choice of whether to use a random ai or the smart ai
+     * @param theModel - the model of the ai screen
+     */
     public AIGrahpicsView(AIGraphicsModel theModel){
         this.theModel = theModel;
 
@@ -146,6 +151,12 @@ public class AIGrahpicsView {
         AIRoot.getChildren().addAll(titleLabel, optionsPane, nTurnsLabel, nTurns, goButton, backButton);
     }
 
+    /**
+     * The function used to build the actual chart/graph of either ai type chosen
+     * @param successRateArray - the array containing the success rate of the specific ai
+     * @param title - which ai is being used
+     * @return - a line chart if the ai
+     */
     public LineChart generateSuccessChart(double[] successRateArray, String title) {
         NumberAxis xAxis = new NumberAxis(0, successRateArray.length, 200);
         xAxis.setLabel("Turn Number");
