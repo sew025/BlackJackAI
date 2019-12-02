@@ -27,12 +27,18 @@ class DealerTest {
     void tearDown() {
     }
 
+    /**
+     * testing the get score, making sure the expected value is equal to the output of the function
+     */
     @Test
     void getScore() {
         dealer.getDealerHand().add(3);
         assertEquals(18,dealer.getScore());
     }
 
+    /**
+     * testing the make move function for the dealer, ensuring that it stands when it hits the magic number
+     */
     @Test
     void makeMove() {
         assertEquals(true, dealer.makeMove());
@@ -40,6 +46,9 @@ class DealerTest {
         assertEquals(false,dealer.makeMove());
     }
 
+    /**
+     * testing the ace switch function that makes sure when the dealer goes over 21 but has an ace the score drops 10 points
+     */
     @Test
     void aceSwitch() {
         ArrayList<Integer> hand = new ArrayList<>();

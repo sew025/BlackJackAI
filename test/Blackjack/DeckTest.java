@@ -24,12 +24,18 @@ class DeckTest {
     void tearDown() {
     }
 
+    /**
+     * testing that a deck was made in the right numerical order
+     */
     @Test
     void makeDeck() {
         ArrayList<Integer> temp = Deck.makeDeck();
         assertEquals(deck.getDeck(),temp);
     }
 
+    /**
+     * testing that once you shuffle the deck, it is not in the same order as the original numerical order deck
+     */
     @Test
     void shuffle() {
         ArrayList<Integer> temp = Deck.makeDeck();
