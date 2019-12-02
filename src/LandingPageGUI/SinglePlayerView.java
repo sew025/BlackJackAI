@@ -35,21 +35,69 @@ public class SinglePlayerView {
     private SinglePlayerModel theModel;
 
     //preliminary set up
+    /**
+     * game root
+     */
     private VBox gameRoot;
+    /**
+     * top half of the game
+     */
     private HBox dealerSide;
+    /**
+     * bottom half of the game
+     */
     private HBox playerSide;
+    /**
+     * playing area for the dealer
+     */
     private VBox dealerGameHalf;
+    /**
+     * playing area for the user
+     */
     private VBox playerGameHalf;
+    /**
+     * card area for the dealer
+     */
     private HBox dealerHand;
+    /**
+     * card area for the user
+     */
     private HBox playerHand;
+    /**
+     * score for the dealer
+     */
     private HBox dealerScore;
+    /**
+     * score for the user
+     */
     private HBox playerScore;
+    /**
+     * area for all of the buttons to play the game
+     */
     private VBox buttonArea;
+    /**
+     * hit button for the user
+     */
     private Button hitButton;
+    /**
+     * stand button for the user
+     */
     private Button standButton;
+    /**
+     * area for the deck at the top of the game
+     */
     private VBox deckArea;
+    /**
+     * the game deck of all the cards
+     */
     private Rectangle deck;
+    /**
+     * label for the money
+     */
     private Label moneyAmount = new Label("Total: $100.00");
+    /**
+     * button to return to the home screen
+     */
     private Button backButton;
 
     /**

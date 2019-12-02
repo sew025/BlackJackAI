@@ -249,6 +249,10 @@ public class SinglePlayerController {
         });
     }
 
+    /**
+     * Allows the user to make bets on the game, asking them for how much money they want to place on the individual game
+     * @author Jack Otto
+     */
     public void makeBet(){
         TextInputDialog dialog = new TextInputDialog("5.00");
         dialog.setTitle("Betting Area");
