@@ -54,11 +54,17 @@ public class SinglePlayerController {
      * the game deck
      */
     private Deck deck = new Deck();
-
+    /**
+     * the money played with
+     */
     private Money total = new Money();
-
+    /**
+     * how much the player is currently betting
+     */
     private double currentBet = 0.00;
-
+    /**
+     * the string the player enters as their bet
+     */
     private Optional<String> result;
 
     /**
