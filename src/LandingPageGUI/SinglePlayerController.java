@@ -85,6 +85,10 @@ public class SinglePlayerController {
             theView.getPlayerScore().getChildren().clear();
             theView.getDealerScore().getChildren().clear();
 
+            //turn on the buttons
+            theView.getHitButton().setDisable(false);
+            theView.getStandButton().setDisable(false);
+
             makeBet();
         });
 
@@ -123,6 +127,9 @@ public class SinglePlayerController {
                     theView.getPlayerScore().getChildren().add(updatedScore);
                 }
                 else{
+                    //disable the buttons
+                    theView.getHitButton().setDisable(true);
+                    theView.getStandButton().setDisable(true);
                     //show the dealer hand after the player loses
                     theView.getDealerScore().getChildren().clear();
                     theView.getDealerHand().getChildren().clear();
@@ -139,6 +146,9 @@ public class SinglePlayerController {
                 }
             }
             else if(player.getScore()==21){
+                //disable the buttons
+                theView.getHitButton().setDisable(true);
+                theView.getStandButton().setDisable(true);
                 //set up the dealer
                 theView.getDealerScore().getChildren().clear();
                 theView.getDealerHand().getChildren().clear();
@@ -197,6 +207,9 @@ public class SinglePlayerController {
          * @author Jack Otto
          */
         theView.getStandButton().setOnAction(actionEvent -> {
+            //disable the buttons
+            theView.getHitButton().setDisable(true);
+            theView.getStandButton().setDisable(true);
             //set up the dealer
             theView.getDealerScore().getChildren().clear();
             theView.getDealerHand().getChildren().clear();
