@@ -105,6 +105,7 @@ public class LandingPageMain extends Application {
 
         Scene openingScene = new Scene(theView.getMainRoot());
         Scene AIResultsScene = new Scene(AIView.getAIRoot());
+        AIResultsScene.getStylesheets().add(getClass().getResource("AIChartStyle.css").toExternalForm());
         Scene gameScene = new Scene(singleView.getGameRoot());
 
         theView.getPlayWithAI().setOnAction(actionEvent -> {
