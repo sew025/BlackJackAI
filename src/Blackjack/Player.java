@@ -108,7 +108,7 @@ public class Player {
                 getPlayerHand().remove(i);
                 getPlayerHand().add(1);
                 setPlayerHand(getPlayerHand());
-                System.out.println(toString());
+                //System.out.println(toString());
                 break;
             }
         }

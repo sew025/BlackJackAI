@@ -32,6 +32,10 @@ import javafx.scene.shape.Rectangle;
  * this is the part of the GUI that shows what is going on, we will show how the game progresses and how the game begins
  */
 public class SinglePlayerView {
+
+    /**
+     * the model
+     */
     private SinglePlayerModel theModel;
 
     //preliminary set up

@@ -116,7 +116,7 @@ public class Dealer {
                 getDealerHand().remove(i);
                 getDealerHand().add(1);
                 setDealerHand(getDealerHand());
-                System.out.println(toString());
+                //System.out.println(toString());
                 break;
             }
         }
