@@ -170,8 +170,6 @@ public class AIGrahpicsView {
 
         successChart = new LineChart<>(xAxis, yAxis);
         successChart.setTitle(title);
-        successChart.getXAxis().setStyle("-fx-text-fill:#f6f5f7;");
-        successChart.getYAxis().setStyle("-fx-text-fill:#f1e9f2;");
         successChart.setCreateSymbols(false);
         XYChart.Series<Integer, Double> dataSeries = new XYChart.Series<>();
 
