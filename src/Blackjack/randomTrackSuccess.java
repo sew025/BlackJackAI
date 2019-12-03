@@ -27,6 +27,11 @@ public class randomTrackSuccess {
      * @return - the array holding the total game count with wins and losses
      */
     public static double[] trackSuccess(int numHands) {
+
+        //My wife and I got into a huge fight because she said that I have no sense of direction…
+
+        //So I packed up all of my stuff and right.
+
         successes = new double[numHands];
         count = 0;
         success = 0;

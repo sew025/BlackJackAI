@@ -1,5 +1,9 @@
 package LandingPageGUI;
 
+//Today my son asked me, “Can I have a bookmark?”
+
+//I burst into tears; he’s 11 years old and he still doesn’t know that my name is Brian!!
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
