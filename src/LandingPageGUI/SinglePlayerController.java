@@ -325,6 +325,10 @@ public class SinglePlayerController {
                     theModel.blackjackMsg();
                     total.addFunds(getCurrentBet()+(getCurrentBet()*3/2));
                     theView.getMoneyAmount().setText(total.toString());
+
+                    //disable the buttons
+                    theView.getHitButton().setDisable(true);
+                    theView.getStandButton().setDisable(true);
                 }
             }
         }
