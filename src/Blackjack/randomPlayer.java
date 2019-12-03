@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class randomPlayer {
     /**
-     * contains the cards within the dealers hand
+     * contains the cards within the player's hand
      */
     private ArrayList<Integer> playerHand;
 
@@ -58,7 +58,7 @@ public class randomPlayer {
 
     /**
      * randomly determines whether the player will continue playing (Hit/True) or will be stopping (Stand/False)
-     * @return boolean value true or false
+     * @return boolean value true (hit) or false (stand)
      */
     public boolean makeMove(){
         double choice = Math.random();

@@ -1,15 +1,12 @@
 package Blackjack;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  * track the success of the random player
  */
 public class randomTrackSuccess {
 
     /**
-     * array holding the games and if the game was won or lost
+     * array holding the current success rate (# of wins/# of games played)
      */
     private static double[] successes;
 
@@ -24,7 +21,8 @@ public class randomTrackSuccess {
     private static double count;
 
     /**
-     * runs the random game a certain number of times and then adds to the success array if they have won or lost
+     * runs the random game a certain number of times and then adds new success rate to the success array based on
+     * if they have won or lost
      * @param numHands - the number times to play the game
      * @return - the array holding the total game count with wins and losses
      */
