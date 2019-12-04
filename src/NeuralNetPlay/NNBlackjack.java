@@ -14,12 +14,10 @@
       * **************************************** */
      package NeuralNetPlay;
 
-     import LandingPageGUI.AIGrahpicsView;
      import NeuralNet.network;
 
      import java.util.ArrayList;
      import java.util.Collections;
-     import java.util.Scanner;
 
      import static java.util.Comparator.comparingInt;
 
@@ -47,15 +45,6 @@
            */
           private static ArrayList<network> networks= new ArrayList<>();
 
-          /**
-           * total games played
-           */
-          private static int total = 0;
-
-          /**
-           * win percentage of the neural net
-           */
-          private static double winRate = 0;
 
 
           /**
@@ -67,7 +56,7 @@
            */
           public double[] runGame(int numTurns) {
 
-               int generations = numTurns;
+               double winRate;
                double[] NNSuccess = new double[numTurns];
                int total = 0;
 
@@ -76,7 +65,7 @@
                     networks.add(new network(null, null));
                }
 
-               for (int i = 0; i < generations; i++) {
+               for (int i = 0; i < numTurns; i++) {
 
                     //simulate 100 games in each network
                     for (int j = 0; j < 100; j++) {
@@ -103,35 +92,21 @@
                          networks.get(j).resetScore();
                          networks.add(networks.get(j).reproduce());
                     }
-                    if (i % 100 == 0);
                }
 
                //simulate each new network
                for(int j=0;j<100;j++){
                     for(int k=0;k<100;k++)
                          newGame = new NNPlayGame(networks.get(j));
-                         if (newGame.trackWin()) {
-                              //getTotal();
-                         }
+
                }
 
                //sort more new networks
                Collections.sort(networks, comparingInt(network::getScore));
 
-               //calculate win%
-               double avg = 0;
-               int temp;
-               for(int i=0;i<100;i++){
-                    temp = networks.get(i).getScore();
-                    avg+=temp;
-               }
-               avg/=(double) generations;
                return NNSuccess;
 
           }
 
-          public static ArrayList<network> getNetworks() {
-             return networks;
-         }
 
      }

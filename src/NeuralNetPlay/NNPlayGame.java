@@ -16,7 +16,6 @@
 
      import Blackjack.Dealer;
      import Blackjack.Deck;
-     import Blackjack.PlayGame;
      import Blackjack.Player;
      import NeuralNet.network;
 
@@ -27,22 +26,13 @@
       */
 
      public class NNPlayGame {
-          /**
-           * deck being played with
-           */
-          private Deck deck = new Deck();
-          /**
-           * dealer hand
-           */
-          private ArrayList<Integer> dealerHand = new ArrayList<>();
+
+
           /**
            * dealer
            */
           private Dealer dealer;
-          /**
-           * player hand
-           */
-          private ArrayList<Integer> playerHand = new ArrayList<>();
+
           /**
            * player
            */
@@ -51,14 +41,7 @@
            * the int used to determine if it is a win, loss or push
            */
           private int winloss;
-          /**
-           * the number of total wins
-           */
-          private int winTotal = 0;
-          /**
-           * the neural network
-           */
-          private NeuralNet.network network = new network(null, null);
+
 
 
           /**
@@ -82,7 +65,7 @@
                dHand.add(deck.getDeck().get(3));
 
                int startPScore = deck.getDeck().get(0) + deck.getDeck().get(2);
-               ;
+
                int startDScore = deck.getDeck().get(1) + deck.getDeck().get(3);
 
 
@@ -140,8 +123,8 @@
           /**
            * compares the dealer and player hands to figure out who won. Returns a number based on the result, which (check NNPlayGame())
            * is added to the neural net/
-           * @param dealerVal
-           * @param playerVal
+           * @param dealerVal the score of the dealer
+           * @param playerVal the score of the player
            * @return 0 (loss) 1 (tie) 2 (win)
            */
 
