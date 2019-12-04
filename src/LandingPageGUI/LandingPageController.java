@@ -18,9 +18,6 @@
  */
 package LandingPageGUI;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
-
 /**
  * the controller for the starting page of the gui
  */
