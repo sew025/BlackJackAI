@@ -5,17 +5,9 @@ package LandingPageGUI;
 //I burst into tears; he’s 11 years old and he still doesn’t know that my name is Brian!!
 
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.applet.Applet;
-import java.io.File;
-import java.util.Map;
 
 /**
  * the class to run the actual game, including all three scene roots

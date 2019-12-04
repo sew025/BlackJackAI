@@ -88,7 +88,6 @@
                     }
 
                     winRate = (double) total / (i + 1);
-                    System.out.println(winRate);
                     NNSuccess[i] = winRate;
 
 
