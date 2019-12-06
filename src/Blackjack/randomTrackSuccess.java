@@ -1,3 +1,18 @@
+/* *****************************************
+ * CSCI205 - Software Engineering and Design
+ * Fall 2019
+ *
+ * Name: Sami Wurm
+ *
+ *
+ * Final Project
+ *
+ * @author Sami Wurm
+ *
+ *
+ * *****************************************
+ */
+
 package Blackjack;
 
 /**
