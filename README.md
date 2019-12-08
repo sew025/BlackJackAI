@@ -19,7 +19,9 @@ This repository contains our work for the final project
 ## Resources
 The following resources were used to develop this project:
 
-ENTER RESOURCES HERE
+https://github.com/ezreker/Blackjack_Training/blob/master/src/blackjack/blackjack.java
+https://towardsdatascience.com/step-by-step-guide-to-building-your-own-neural-network-from-scratch-df64b1c5ab6e
+
 
 ##Project Explanation
 For our final project, we have made the casino game, Blackjack. Within our project we have created
