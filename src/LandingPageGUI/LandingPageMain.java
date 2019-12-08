@@ -6,7 +6,11 @@ package LandingPageGUI;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 
 /**
@@ -94,10 +98,10 @@ public class LandingPageMain extends Application {
         AIController = new AIGraphicsController(AIModel, AIView);
         singleController = new SinglePlayerController(singleModel,singleView);
 
-//        File musicFile = new File("src/LandingPageGUI/PokerFace.mp3");
-//        final Media media = new Media(musicFile.toURI().toString());
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.play();
+        File musicFile = new File("src/LandingPageGUI/PokerFace.mp3");
+        final Media media = new Media(musicFile.toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
 
         Scene openingScene = new Scene(theView.getMainRoot());
         Scene AIResultsScene = new Scene(AIView.getAIRoot());
