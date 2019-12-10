@@ -53,10 +53,6 @@ JavaFX - version: javafx-sdk-11
 
 JUnit Testing - version: org.junit.jupiter:junit-jupiter:5.5.2
 
-##Project Build and Run Instructions for the Jar File
-
-ENTER THE INSTRUCTIONS HERE ONCE WE HAVE THE JAR FILE 
-
 ##Class Descriptions
 ###Blackjack Package
 This package contains the code needed to create a consul version of the game blackjack.
