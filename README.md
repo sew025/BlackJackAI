@@ -22,6 +22,16 @@ The following resources were used to develop this project:
 https://github.com/ezreker/Blackjack_Training/blob/master/src/blackjack/blackjack.java
 https://towardsdatascience.com/step-by-step-guide-to-building-your-own-neural-network-from-scratch-df64b1c5ab6e
 
+##Instructions on Compiling
+There are a couple of ways to run our project.
+The first is with the .jar file in the dist folder. Run the following from dist on the command line:
+ java --module-path (path to javafx files) --add-modules=ALL-MODULE-PATH -jar FinalProject.jar
+The only limitation to this is that it will not support the non-java files that we have in our project. We used an mp3 music 
+file to play music on the landing page of our GUI. It will also not use the images that we inserted for our cards.
+
+The best way to compile and run our application is to build the project and then go to "LandingPageGUI" under src. In LandingPageGUI,
+choose LandingPageMain. Run the "main(string[] args)" in this file. This will run the application.
+
 
 ##Project Explanation
 For our final project, we have made the casino game, Blackjack. Within our project we have created
@@ -39,7 +49,7 @@ In the end when we compare the two graphs, it can easily be seen that the AI out
 margin, usually somewhere between 20-25% better.
 
 ##Third Party Libraries
-JavaFX - version: javafx-sdk-13.0.1
+JavaFX - version: javafx-sdk-11
 
 JUnit Testing - version: org.junit.jupiter:junit-jupiter:5.5.2
 
