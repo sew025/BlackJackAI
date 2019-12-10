@@ -11,6 +11,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.MalformedURLException;
 
 
 /**
@@ -93,15 +94,15 @@ public class LandingPageMain extends Application {
      * @author Matt McGauley
      */
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws MalformedURLException {
         theController = new LandingPageController(theModel, theView);
         AIController = new AIGraphicsController(AIModel, AIView);
         singleController = new SinglePlayerController(singleModel,singleView);
 
-        File musicFile = new File("src/LandingPageGUI/PokerFace.mp3");
-        final Media media = new Media(musicFile.toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+//        File musicFile = new File("/src/LandingPageGUI/PokerFace.mp3");
+//        final Media media = new Media(musicFile.toURI().toURL().toExternalForm());
+//        MediaPlayer mediaPlayer = new MediaPlayer(media);
+//        mediaPlayer.play();
 
         Scene openingScene = new Scene(theView.getMainRoot());
         Scene AIResultsScene = new Scene(AIView.getAIRoot());
